@@ -12,7 +12,7 @@ const routes = [
   {
     path: '/register',
     name: 'Register',
-    component: ()=> import('@/views/Register'),
+    component: ()=> import('@/views/auth/Register'),
     meta: { title: '注册' }
   },
   {
