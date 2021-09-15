@@ -1,8 +1,11 @@
 <template>
-  <div id="contaioner">
+  <div class="container context">
     <router-view />
   </div>
 </template>
 
-<style>
+<style scoped>
+.container {
+  min-height: 500px;
+}
 </style>
