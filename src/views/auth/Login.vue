@@ -2,9 +2,7 @@
   <div class="columns py-6">
     <div class="column is-half is-offset-one-quarter">
       <el-card shadow="never">
-        <div slot="header" class="has-text-centered has-text-weight-bold">
-          用户登录
-        </div>
+        <div slot="header" class="has-text-centered has-text-weight-bold">用户登录</div>
         <div>
           <el-form
             v-loading="loading"
@@ -20,11 +18,7 @@
             </el-form-item>
 
             <el-form-item label="密码" prop="pass">
-              <el-input
-                type="password"
-                v-model="ruleForm.pass"
-                autocomplete="off"
-              ></el-input>
+              <el-input type="password" v-model="ruleForm.pass" autocomplete="off"></el-input>
             </el-form-item>
 
             <el-form-item label="记住" prop="delivery">
@@ -32,9 +26,7 @@
             </el-form-item>
 
             <el-form-item>
-              <el-button type="primary" @click="submitForm('ruleForm')"
-                >提交</el-button
-              >
+              <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
               <el-button @click="resetForm('ruleForm')">重置</el-button>
             </el-form-item>
           </el-form>
@@ -92,6 +84,7 @@ export default {
                   type: "success",
                   duration: 2000,
                 });
+              this.$store.dispatch("user/getInfo");
               setTimeout(() => {
                 this.loading = false;
                 this.$router.push({ path: this.redirect || "/" });
