@@ -174,7 +174,7 @@ export default {
     init(tab) {
       getList(this.page.current, this.page.size, tab).then((response) => {
         const { data } = response;
-        this.articleList = data.records;
+        this.articleList = data.content;
       });
     },
     handleClick(tab) {
