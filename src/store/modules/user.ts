@@ -14,7 +14,7 @@ const user: Module<UserState, RootState> = {
   actions: {
     async login({ commit }, form: LoginForm) {
       const { data } = await login({ username: form.name.trim(), password: form.pass, rememberMe: form.rememberMe })
-      setToken(data.token)
+      setToken(data.token, form.rememberMe)
       commit('SET_TOKEN_STATE', data.token)
     },
     async getUserInfo({ commit }) {

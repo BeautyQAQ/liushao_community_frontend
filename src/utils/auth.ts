@@ -9,8 +9,8 @@ export function getToken() {
 }
 
 // 设置Token，1天,与后端同步
-export function setToken(token: string) {
-    return Cookies.set(uToken, token, {expires: 1})
+export function setToken(token: string, rememberMe = true) {
+    return Cookies.set(uToken, token, { ...(rememberMe ? { expires: 1 } : {}), sameSite: 'strict', secure: location.protocol === 'https:' })
 }
 
 // 删除Token

@@ -32,7 +32,7 @@ export default defineComponent({
         fetchTodayTip(){
             getTodayTip().then((result) => {
                 const { data } = result
-                this.tip = data
+                this.tip = data || { content: '欢迎分享你的经验与想法。', author: '流沙社区' }
             }).catch((err) => {
 
             });

@@ -77,7 +77,8 @@ export default defineComponent({
   },
   methods: {
     handleSizeChange(val: number) {
-      this.$emit("pagination", { page: this.currentPage, limit: val });
+      this.$emit("update:page", 1);
+      this.$emit("pagination", { page: 1, limit: val });
       if (this.autoScroll) {
         scrollTo(0, 800);
       }

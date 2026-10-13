@@ -9,7 +9,7 @@
             :model="ruleForm"
             status-icon
             :rules="rules"
-            ref="ruleForm"
+            ref="formRef"
             label-width="100px"
             class="demo-ruleForm"
           >
@@ -26,7 +26,7 @@
             </el-form-item>
 
             <el-form-item>
-              <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
+              <el-button type="primary" :loading="loading" @click="submitForm('ruleForm')">登录</el-button>
               <el-button @click="resetForm('ruleForm')">重置</el-button>
             </el-form-item>
           </el-form>
@@ -36,71 +36,27 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
-import type { FormInstance } from 'element-plus'
-export default defineComponent({
-  name: "Login",
-  data() {
-    return {
-      redirect: undefined,
-      loading: false,
-      ruleForm: {
-        name: "",
-        pass: "",
-        rememberMe: true,
-      },
-      rules: {
-        name: [
-          { required: true, message: "请输入账号", trigger: "blur" },
-          {
-            min: 2,
-            max: 15,
-            message: "长度在 2 到 15 个字符",
-            trigger: "blur",
-          },
-        ],
-        pass: [
-          { required: true, message: "请输入密码", trigger: "blur" },
-          {
-            min: 6,
-            max: 20,
-            message: "长度在 6 到 20 个字符",
-            trigger: "blur",
-          },
-        ],
-      },
-    };
-  },
-  methods: {
-    submitForm(formName: string) {
-      ;(this.$refs[formName] as FormInstance).validate((valid) => {
-        if (valid) {
-          this.loading = true;
-          this.$store
-            .dispatch("user/login", this.ruleForm)
-            .then(() => {
-              this.$message({
-                  message: "登录成功",
-                  type: "success",
-                  duration: 2000,
-                });
-              setTimeout(() => {
-                this.loading = false;
-                this.$router.push({ path: this.redirect || "/" });
-              }, 0.1 * 1000);
-            })
-            .catch(() => {
-              this.loading = false;
-            });
-        } else {
-          return;
-        }
-      });
-    },
-    resetForm(formName: string) {
-      ;(this.$refs[formName] as FormInstance).resetFields();
-    },
-  },
-})
+<script setup lang="ts">
+import { reactive, ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import { ElMessage, type FormInstance, type FormRules } from 'element-plus'
+import store from '@/store'
+const router = useRouter(), route = useRoute(), formRef = ref<FormInstance>(), loading = ref(false)
+const ruleForm = reactive({ name: '', pass: '', rememberMe: true })
+const rules: FormRules = {
+ name: [{ required: true, max: 32, message: '请输入账号', trigger: 'blur' }],
+ pass: [{ required: true, max: 72, message: '请输入密码', trigger: 'blur' }]
+}
+async function submitForm(_name: string) {
+ if (loading.value || !await formRef.value?.validate().catch(() => false)) return
+ loading.value = true
+ try {
+  await store.dispatch('user/login', ruleForm)
+  await store.dispatch('user/getUserInfo')
+  ElMessage.success('登录成功')
+  const target = String(route.query.redirect || '/')
+  await router.replace(target.startsWith('/') && !target.startsWith('//') && !target.startsWith('/login') ? target : '/')
+ } catch { /* Displayed by request layer. */ } finally { loading.value = false }
+}
+function resetForm(_name: string) { formRef.value?.resetFields() }
 </script>

@@ -40,7 +40,7 @@
             </el-form-item>
 
             <el-form-item>
-              <el-button type="primary" @click="submitForm('ruleForm')"
+              <el-button type="primary" :loading="loading" @click="submitForm('ruleForm')"
                 >立即注册</el-button
               >
               <el-button @click="resetForm('ruleForm')">重置</el-button>
@@ -62,13 +62,13 @@ const formRef = ref<FormInstance>()
 const loading = ref(false)
 const ruleForm = reactive({ name: '', pass: '', checkPass: '', email: '' })
 const rules: FormRules = {
-  name: [{ required: true, min: 2, max: 10, message: '账号长度为 2 到 10 个字符', trigger: 'blur' }],
-  pass: [{ required: true, min: 6, max: 20, message: '密码长度为 6 到 20 个字符', trigger: 'blur' }],
+  name: [{ required: true, pattern: /^[a-zA-Z0-9_]{2,32}$/, message: '账号为 2 至 32 位字母、数字或下划线', trigger: 'blur' }],
+  pass: [{ required: true, min: 8, max: 72, message: '密码至少 8 个字符，最多 72 字节', trigger: 'blur' }],
   checkPass: [{ validator: (_rule, value, callback) => callback(value === ruleForm.pass && value ? undefined : new Error('两次输入密码不一致')), trigger: 'blur' }],
   email: [{ required: true, type: 'email', message: '请输入正确的邮箱地址', trigger: 'blur' }]
 }
 async function submitForm(_formName: string) {
-  if (!await formRef.value?.validate().catch(() => false)) return
+  if (loading.value || !await formRef.value?.validate().catch(() => false)) return
   loading.value = true
   try { await userRegister(ruleForm); ElMessage.success('账号注册成功'); await router.push('/login') }
   catch { /* The request layer displays the error. */ }

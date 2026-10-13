@@ -3,7 +3,7 @@
     <b-navbar class="container is-white" :fixed-top="true">
       <template #brand>
         <b-navbar-item tag="div">
-          <img :src="doubaoImg" alt="logo" />
+          <router-link to="/" class="has-text-weight-bold">流沙社区</router-link>
         </b-navbar-item>
 
         <b-navbar-item
@@ -27,7 +27,7 @@
               v-model="searchKey"
               class="s_input"
               width="80%"
-              placeholder="搜索帖子、标签和用户"
+              placeholder="搜索标题、正文、标签或作者"
               rounded
               clearable
               @keyup.enter="search()"
@@ -131,15 +131,11 @@ export default defineComponent({
   },
   methods: {
     async logout() {
-      this.$store.dispatch("user/logout").then(() => {
-        this.$message.info("退出登录成功");
-        setTimeout(() => {
-          this.$router.push({ path: "/" });
-        }, 500);
-      });
+      try { await this.$store.dispatch('user/logout'); this.$message.info('退出登录成功') }
+      catch { /* Displayed by request layer. */ }
+      finally { await this.$router.push('/') }
     },
     search() {
-      console.log(this.token);
       if (this.searchKey.trim() === null || this.searchKey.trim() === "") {
         this.$message.info({
           showClose: true,
@@ -148,7 +144,7 @@ export default defineComponent({
         });
         return;
       }
-      this.$router.push({ path: "/search", query: { key: this.searchKey } });
+      this.$router.push({ path: "/search", query: { key: this.searchKey.trim().slice(0, 100) } });
     },
   },
 })

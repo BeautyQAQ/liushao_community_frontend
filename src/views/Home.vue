@@ -36,7 +36,7 @@ export default defineComponent({
       getBillboard()
         .then((result) => {
           const { data } = result;
-          this.billboard = data;
+          this.billboard = data || { content: '欢迎来到流沙社区' };
         })
         .catch((err) => {});
     },

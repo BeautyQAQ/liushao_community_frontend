@@ -66,7 +66,6 @@ html {
   z-index: 89;
   top: 0;
   width: 100%;
-  min-width: 1032px;
   background: #fff;
   box-shadow: 0 1px 0px rgba(26, 26, 26, 0.1);
   height: 53px;
@@ -148,3 +147,7 @@ a:hover {
 .is-ellipsis-3 {
   -webkit-line-clamp: 3;
 }
+
+.context { padding: 20px 16px; }
+.media-content { min-width: 0; overflow-wrap: anywhere; }
+.pagination-container { overflow-x: auto; }
