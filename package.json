@@ -3,27 +3,36 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "dev": "vite",
+    "serve": "vite",
+    "typecheck": "vue-tsc --noEmit",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "axios": "^0.21.4",
-    "buefy": "^0.9.10",
-    "core-js": "^3.6.5",
-    "darkreader": "^4.9.35",
-    "dayjs": "^1.10.7",
-    "element-ui": "^2.15.6",
-    "js-cookie": "^3.0.1",
-    "nprogress": "^0.2.0",
-    "vue": "^2.6.11",
-    "vue-router": "^3.2.0",
-    "vuex": "^3.4.0"
+    "axios": "^1.13.2",
+    "element-plus": "^2.14.7",
+    "@element-plus/icons-vue": "^2.3.2",
+    "vue": "3.5.43",
+    "vue-router": "^4.6.4",
+    "vuex": "^4.1.0",
+    "buefy": "^3.1.0",
+    "darkreader": "^4.9.117",
+    "dayjs": "^1.11.13",
+    "js-cookie": "^3.0.5",
+    "nprogress": "^0.2.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-router": "~4.5.0",
-    "@vue/cli-plugin-vuex": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "vue-template-compiler": "^2.6.11"
+    "@vitejs/plugin-vue": "^6.0.10",
+    "@types/node": "^22.0.0",
+    "typescript": "~5.9.3",
+    "vite": "^8.3.4",
+    "vue-tsc": "^3.3.13",
+    "@types/js-cookie": "^3.0.6",
+    "@types/nprogress": "^0.2.3"
+  },
+  "type": "module",
+  "engines": {
+    "node": "^22.12.0 || >=24.0.0"
   }
 }

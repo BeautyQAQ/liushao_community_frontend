@@ -17,12 +17,12 @@
       <div>
         <span>{{ title }} ALL RIGHTS RESERVED</span>
         <div style="float: right">
-          <template>
+
             <b-taglist attached>
               <b-tag type="is-dark" size="is-normal">Design</b-tag>
               <b-tag type="is-info" size="is-normal">{{ author }}</b-tag>
             </b-taglist>
-          </template>
+
         </div>
       </div>
     </div>
@@ -30,9 +30,10 @@
   </footer>
 </template>
 
-<script>
-import BackTop from "@/components/Backtop/BackTop";
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue'
+import BackTop from "@/components/Backtop/BackTop.vue";
+export default defineComponent({
   name: "Footer",
   components: {
     BackTop
@@ -43,7 +44,7 @@ export default {
       author: '豆约翰',
     };
   },
-};
+})
 </script>
 
 <style scoped>

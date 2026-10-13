@@ -2,7 +2,7 @@
   <div class="columns py-6">
     <div class="column is-half is-offset-one-quarter">
       <el-card shadow="never">
-        <div slot="header" class="has-text-centered has-text-weight-bold">用户登录</div>
+        <template #header><div class="has-text-centered has-text-weight-bold">用户登录</div></template>
         <div>
           <el-form
             v-loading="loading"
@@ -36,8 +36,10 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue'
+import type { FormInstance } from 'element-plus'
+export default defineComponent({
   name: "Login",
   data() {
     return {
@@ -71,15 +73,14 @@ export default {
     };
   },
   methods: {
-    submitForm(formName) {
-      this.$refs[formName].validate((valid) => {
+    submitForm(formName: string) {
+      ;(this.$refs[formName] as FormInstance).validate((valid) => {
         if (valid) {
           this.loading = true;
           this.$store
             .dispatch("user/login", this.ruleForm)
             .then(() => {
-              this,
-                $message({
+              this.$message({
                   message: "登录成功",
                   type: "success",
                   duration: 2000,
@@ -93,13 +94,13 @@ export default {
               this.loading = false;
             });
         } else {
-          return false;
+          return;
         }
       });
     },
-    resetForm(formName) {
-      this.$refs[formName].resetFields();
+    resetForm(formName: string) {
+      ;(this.$refs[formName] as FormInstance).resetFields();
     },
   },
-};
+})
 </script>

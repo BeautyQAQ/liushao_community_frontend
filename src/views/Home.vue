@@ -12,12 +12,13 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue'
 import { getBillboard } from "@/api/billboard";
-import CardBar from "@/views/card/CardBar";
-import PostList from "@/views/post/Index";
+import CardBar from "@/views/card/CardBar.vue";
+import PostList from "@/views/post/Index.vue";
 
-export default {
+export default defineComponent({
   name: "Home",
   components: { CardBar, TopicList: PostList },
   data() {
@@ -40,5 +41,5 @@ export default {
         .catch((err) => {});
     },
   },
-};
+})
 </script>

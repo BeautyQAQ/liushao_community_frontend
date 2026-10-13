@@ -11,12 +11,13 @@
   </section>
 </template>
 
-<script>
-import TipCard from '@/views/card/Tip'
-import PromotionCard from '@/views/card/Promotion'
-import LoginWelcome from '@/views/card/LoginWelcome'
+<script lang="ts">
+import { defineComponent } from 'vue'
+import TipCard from '@/views/card/Tip.vue'
+import PromotionCard from '@/views/card/Promotion.vue'
+import LoginWelcome from '@/views/card/LoginWelcome.vue'
 
-export default {
+export default defineComponent({
     name: 'CardBar',
     components: { LoginWelcome, PromotionCard, TipCard },
     data() {
@@ -24,7 +25,7 @@ export default {
 
         }
     }
-}
+})
 </script>
 
 <style scoped>

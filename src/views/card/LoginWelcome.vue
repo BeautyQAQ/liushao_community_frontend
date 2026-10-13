@@ -1,8 +1,8 @@
 <template>
   <el-card class="box-card" shadow="never">
-    <div slot="header">
+    <template #header><div>
       <span>💐 发帖</span>
-    </div>
+    </div></template>
     <div v-if="token != null && token !== ''" class="has-text-centered">
       <b-button
         type="is-danger"
@@ -33,10 +33,11 @@
   </el-card>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue'
 import { mapGetters } from "vuex";
 
-export default {
+export default defineComponent({
   name: "LoginWelcome",
   data() {
     return {};
@@ -44,7 +45,7 @@ export default {
   computed: {
     ...mapGetters(["token"]),
   },
-};
+})
 </script>
 
 <style scoped></style>

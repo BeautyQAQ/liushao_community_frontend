@@ -1,7 +1,7 @@
 <template>
   <header class="header has-background-white has-text-black">
     <b-navbar class="container is-white" :fixed-top="true">
-      <template slot="brand">
+      <template #brand>
         <b-navbar-item tag="div">
           <img :src="doubaoImg" alt="logo" />
         </b-navbar-item>
@@ -14,13 +14,13 @@
           主页
         </b-navbar-item>
       </template>
-      <template slot="start">
+      <template #start>
         <b-navbar-item tag="router-link" :to="{ path: '/' }">
           🌐 主页
         </b-navbar-item>
       </template>
 
-      <template slot="end">
+      <template #end>
         <b-navbar-item tag="div">
           <b-field position="is-centered">
             <b-input
@@ -30,7 +30,7 @@
               placeholder="搜索帖子、标签和用户"
               rounded
               clearable
-              @keyup.enter.native="search()"
+              @keyup.enter="search()"
             />
 
             <p class="control">
@@ -64,17 +64,17 @@
           </div>
         </b-navbar-item>
 
-        <b-navbar-dropdown v-else :label="user.alias">
+        <b-navbar-dropdown v-else :label="user?.alias || '用户'">
           <b-navbar-item
             tag="router-link"
-            :to="{ path: `/member/${user.username}/home` }"
+            :to="{ path: `/member/${user?.username}/home` }"
           >
             🧘 个人中心
           </b-navbar-item>
           <hr class="dropdown-divider" />
           <b-navbar-item
             tag="router-link"
-            :to="{ path: `/member/${user.username}/setting` }"
+            :to="{ path: `/member/${user?.username}/setting` }"
           >
             ⚙ 设置中心
           </b-navbar-item>
@@ -86,19 +86,22 @@
   </header>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue'
 import {
   disable as disableDarkMode,
   enable as enableDarkMode,
 } from "darkreader";
 import { getDarkMode, setDarkMode } from "@/utils/auth";
+import logoUrl from '@/assets/logo.png'
+import doubaoImg from '@/assets/image/doubao.png'
 import { mapGetters } from "vuex";
-export default {
+export default defineComponent({
   name: "Header",
   data() {
     return {
-      logoUrl: require("@/assets/logo.png"),
-      doubaoImg: require("@/assets/image/doubao.png"),
+      logoUrl,
+      doubaoImg,
       searchKey: "",
       darkMode: false,
     };
@@ -131,7 +134,7 @@ export default {
       this.$store.dispatch("user/logout").then(() => {
         this.$message.info("退出登录成功");
         setTimeout(() => {
-          this.$router.push({ path: this.redirect || "/" });
+          this.$router.push({ path: "/" });
         }, 500);
       });
     },
@@ -143,12 +146,12 @@ export default {
           message: "请输入关键字搜索！",
           type: "warning",
         });
-        return false;
+        return;
       }
-      this.$router.push({ path: "/search?key=" + this.searchKey });
+      this.$router.push({ path: "/search", query: { key: this.searchKey } });
     },
   },
-};
+})
 </script>
 
 <style scoped>

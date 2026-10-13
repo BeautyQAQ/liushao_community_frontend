@@ -1,8 +1,8 @@
 <template>
   <el-card class="box-card" shadow="never">
-    <div slot="header">
+    <template #header><div>
       <span>🥂 推广</span>
-    </div>
+    </div></template>
     <div>
       <p v-for="(item, index) in list" :key="index" class="block">
         <a :href="item.link" target="_blank">{{ item.title }}</a>
@@ -11,14 +11,16 @@
   </el-card>
 </template>
 
-<script>
-import { getList } from "@/api/promote.js"
+<script lang="ts">
+import type { Promotion } from '@/types'
+import { defineComponent } from 'vue'
+import { getList } from "@/api/promote"
 
-export default {
+export default defineComponent({
   name: "Promotion",
   data() {
     return {
-      list: [],
+      list: [] as Promotion[],
     };
   },
   created() {
@@ -34,7 +36,7 @@ export default {
         .catch((err) => {});
     },
   },
-};
+})
 </script>
 
 <style scoped>

@@ -11,17 +11,20 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue'
+export default defineComponent({
   name: "404",
   data() {
     return {
+      timer: undefined as ReturnType<typeof setInterval> | undefined,
       times: 10
     }
   },
   created() {
     this.goHome();
   },
+  beforeUnmount() { clearInterval(this.timer) },
   methods: {
     goHome: function () {
       this.timer = setInterval(() => {
@@ -33,7 +36,7 @@ export default {
       }, 1000)
     }
   }
-}
+})
 </script>
 
 <style scoped>

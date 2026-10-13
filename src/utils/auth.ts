@@ -9,7 +9,7 @@ export function getToken() {
 }
 
 // 设置Token，1天,与后端同步
-export function setToken(token) {
+export function setToken(token: string) {
     return Cookies.set(uToken, token, {expires: 1})
 }
 
@@ -19,11 +19,11 @@ export function removeToken() {
 }
 
 export function removeAll() {
-    return Cookies.Cookies.removeAll()
+    return [uToken, darkMode].forEach(key => Cookies.remove(key))
 }
 
-export function setDarkMode(mode) {
-    return Cookies.set(darkMode, mode, {expires: 365})
+export function setDarkMode(mode: boolean) {
+    return Cookies.set(darkMode, String(mode), {expires: 365})
 }
 
 export function getDarkMode() {

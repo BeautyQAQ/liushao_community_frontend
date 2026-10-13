@@ -1,8 +1,8 @@
 <template>
   <el-card class="box-card" shadow="never">
-    <div slot="header">
+    <template #header><div>
       <span>🥳 每日一句</span>
-    </div>
+    </div></template>
     <div>
       <div class="has-text-left block">
         {{ tip.content }}
@@ -14,14 +14,15 @@
   </el-card>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue'
 import { getTodayTip } from '@/api/tip'
 
-export default {
+export default defineComponent({
     name: 'Tip',
     data() {
         return {
-            tip: {}
+            tip: { content: '', author: '' }
         }
     },
     created() {
@@ -33,11 +34,11 @@ export default {
                 const { data } = result
                 this.tip = data
             }).catch((err) => {
-                
+
             });
         }
     }
-}
+})
 </script>
 
 <style scoped>

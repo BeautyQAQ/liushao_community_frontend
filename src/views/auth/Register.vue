@@ -2,12 +2,12 @@
   <div class="columns py-6">
     <div class="column is-half is-offset-one-quarter">
       <el-card shadow="never">
-        <div slot="header" class="has-text-centered has-text-weight-bold">
+        <template #header><div class="has-text-centered has-text-weight-bold">
           新用户入驻
-        </div>
+        </div></template>
         <div>
           <el-form
-            ref="ruleForm"
+            ref="formRef"
             v-loading="loading"
             :model="ruleForm"
             status-icon
@@ -52,97 +52,30 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
+import { reactive, ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { ElMessage, type FormInstance, type FormRules } from 'element-plus'
 import { userRegister } from '@/api/auth/auth'
-export default {
-  name: 'Register',
-  data() {
-    const validatePass = (rule, value, callback) => {
-      if (value === '') {
-        callback(new Error('请再次输入密码'))
-      } else if (value !== this.ruleForm.pass) {
-        callback(new Error('两次输入密码不一致!'))
-      } else {
-        callback()
-      }
-    }
-    return {
-      loading: false,
-      ruleForm: {
-        name: '',
-        pass: '',
-        checkPass: '',
-        email: ''
-      },
-      rules: {
-        name: [
-          { required: true, message: '请输入账号', trigger: 'blur' },
-          {
-            min: 2,
-            max: 10,
-            message: '长度在 2 到 10 个字符',
-            trigger: 'blur'
-          }
-        ],
-        pass: [
-          { required: true, message: '请输入密码', trigger: 'blur' },
-          {
-            min: 6,
-            max: 20,
-            message: '长度在 6 到 20 个字符',
-            trigger: 'blur'
-          }
-        ],
-        checkPass: [
-          { required: true, message: '请再次输入密码', trigger: 'blur' },
-          { validator: validatePass, trigger: 'blur' }
-        ],
-        email: [
-          { required: true, message: '请输入邮箱地址', trigger: 'blur' },
-          {
-            type: 'email',
-            message: '请输入正确的邮箱地址',
-            trigger: ['blur', 'change']
-          }
-        ]
-      }
-    }
-  },
-  methods: {
-    submitForm(formName) {
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          this.loading = true
-          userRegister(this.ruleForm)
-            .then((value) => {
-              const { code, message } = value
-              if (code === 200) {
-                this.$message({
-                  message: '账号注册成功',
-                  type: 'success'
-                })
-                setTimeout(() => {
-                  this.loading = false
-                  this.$router.push({ path: this.redirect || '/login' })
-                }, 0.1 * 1000)
-              } else {
-                this.$message.error('注册失败，' + message)
-              }
-            })
-            .catch(() => {
-              this.loading = false
-            })
-        } else {
-          return false
-        }
-      })
-    },
-    resetForm(formName) {
-      this.$refs[formName].resetFields()
-    }
-  }
+const router = useRouter()
+const formRef = ref<FormInstance>()
+const loading = ref(false)
+const ruleForm = reactive({ name: '', pass: '', checkPass: '', email: '' })
+const rules: FormRules = {
+  name: [{ required: true, min: 2, max: 10, message: '账号长度为 2 到 10 个字符', trigger: 'blur' }],
+  pass: [{ required: true, min: 6, max: 20, message: '密码长度为 6 到 20 个字符', trigger: 'blur' }],
+  checkPass: [{ validator: (_rule, value, callback) => callback(value === ruleForm.pass && value ? undefined : new Error('两次输入密码不一致')), trigger: 'blur' }],
+  email: [{ required: true, type: 'email', message: '请输入正确的邮箱地址', trigger: 'blur' }]
 }
+async function submitForm(_formName: string) {
+  if (!await formRef.value?.validate().catch(() => false)) return
+  loading.value = true
+  try { await userRegister(ruleForm); ElMessage.success('账号注册成功'); await router.push('/login') }
+  catch { /* The request layer displays the error. */ }
+  finally { loading.value = false }
+}
+function resetForm(_formName: string) { formRef.value?.resetFields() }
 </script>
 
 <style scoped>
-</style> 
+</style>
