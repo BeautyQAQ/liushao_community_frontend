@@ -64,13 +64,20 @@
           </div>
         </b-navbar-item>
 
-        <b-navbar-dropdown v-else :label="user?.alias || '用户'">
+        <b-navbar-item v-if="token" tag="router-link" to="/notifications"><el-badge :value="notificationUnread" :hidden="!notificationUnread" :max="99">通知</el-badge></b-navbar-item>
+        <b-navbar-item v-if="token" tag="router-link" to="/messages"><el-badge :value="messageUnread" :hidden="!messageUnread" :max="99">私信</el-badge></b-navbar-item>
+        <b-navbar-dropdown v-if="token" :label="user?.alias || '用户'">
           <b-navbar-item
             tag="router-link"
             :to="{ path: `/member/${user?.username}/home` }"
           >
             🧘 个人中心
           </b-navbar-item>
+          <b-navbar-item tag="router-link" to="/post/create">发布主题</b-navbar-item>
+          <b-navbar-item tag="router-link" to="/me/posts">我的帖子</b-navbar-item>
+          <b-navbar-item tag="router-link" to="/me/bookmarks">我的收藏</b-navbar-item>
+          <b-navbar-item tag="router-link" to="/me/following">我的关注</b-navbar-item>
+          <b-navbar-item tag="router-link" to="/me/followers">我的粉丝</b-navbar-item>
           <hr class="dropdown-divider" />
           <b-navbar-item
             tag="router-link"
@@ -87,7 +94,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, onBeforeUnmount, onMounted, watch } from 'vue'
+import { useRoute } from 'vue-router'
+import store from '@/store'
+import { notificationUnread, messageUnread, refreshInbox } from '@/composables/useInbox'
 import {
   disable as disableDarkMode,
   enable as enableDarkMode,
@@ -98,6 +108,14 @@ import doubaoImg from '@/assets/image/doubao.png'
 import { mapGetters } from "vuex";
 export default defineComponent({
   name: "Header",
+  setup() {
+    const route = useRoute()
+    watch(() => [store.state.user.token, route.fullPath], refreshInbox, { immediate: true })
+    let timer: ReturnType<typeof setInterval> | undefined
+    onMounted(() => { timer = setInterval(() => { if (store.state.user.token && document.visibilityState === 'visible') void refreshInbox() }, 30000) })
+    onBeforeUnmount(() => clearInterval(timer))
+    return { notificationUnread, messageUnread }
+  },
   data() {
     return {
       logoUrl,

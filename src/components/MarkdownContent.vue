@@ -3,10 +3,21 @@
 import { computed } from 'vue'
 import { marked } from 'marked'
 import DOMPurify from 'dompurify'
+import { mediaUrl } from '@/utils/media'
 const props = defineProps<{ content: string }>()
-const html = computed(() => DOMPurify.sanitize(marked.parse(props.content, { async: false }), {
-  USE_PROFILES: { html: true }, FORBID_TAGS: ['style', 'form', 'input', 'button', 'iframe'], FORBID_ATTR: ['style']
-}))
+const html = computed(() => {
+  const fragment = DOMPurify.sanitize(marked.parse(props.content, { async: false }), {
+    USE_PROFILES: { html: true }, FORBID_TAGS: ['style', 'form', 'input', 'button', 'iframe'], FORBID_ATTR: ['style'], RETURN_DOM_FRAGMENT: true
+  })
+  fragment.querySelectorAll('img').forEach(img => {
+    const source = img.getAttribute('src')
+    if (source?.startsWith('/uploads/')) img.setAttribute('src', mediaUrl(source)!)
+    img.setAttribute('loading', 'lazy')
+  })
+  const container = document.createElement('div')
+  container.append(fragment)
+  return container.innerHTML
+})
 </script>
 <style scoped>
 .markdown-content { line-height: 1.8; overflow-wrap: anywhere; }

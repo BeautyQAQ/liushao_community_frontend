@@ -7,7 +7,7 @@
       <el-button v-if="failed" @click="loadPosts">重试</el-button>
     </el-empty>
     <article v-for="item in articleList" :key="item.id" class="media">
-      <router-link class="media-left" :to="`/member/${item.username}/home`"><el-avatar :src="item.avatar || undefined">{{ item.alias?.slice(0, 1) || item.username.slice(0, 1) }}</el-avatar></router-link>
+      <router-link class="media-left" :to="`/member/${item.username}/home`"><el-avatar :src="mediaUrl(item.avatar)">{{ item.alias?.slice(0, 1) || item.username.slice(0, 1) }}</el-avatar></router-link>
       <div class="media-content">
         <router-link :to="'/post/' + item.id">{{ item.title }}</router-link>
         <p class="has-text-grey is-size-7 mt-2">
@@ -26,6 +26,7 @@ import dayjs from 'dayjs'
 import { getList } from '@/api/post'
 import type { Post } from '@/types'
 import Pagination from '@/components/Pagination/index.vue'
+import { mediaUrl } from '@/utils/media'
 const props = withDefaults(defineProps<{ query?: string; tag?: string; author?: string }>(), { query: '', tag: '', author: '' })
 const activeName = ref('latest'), loading = ref(false), failed = ref(false)
 const articleList = ref<Post[]>([])

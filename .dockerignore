@@ -1,0 +1,11 @@
+.git
+.github
+node_modules
+dist
+.env
+.env.*
+.npmrc
+*.log
+.DS_Store
+.idea
+.vscode

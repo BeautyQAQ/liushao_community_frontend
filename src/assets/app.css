@@ -151,3 +151,4 @@ a:hover {
 .context { padding: 20px 16px; }
 .media-content { min-width: 0; overflow-wrap: anywhere; }
 .pagination-container { overflow-x: auto; }
+.context .title { overflow-wrap: anywhere; }

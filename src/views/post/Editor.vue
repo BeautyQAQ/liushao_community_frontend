@@ -7,9 +7,10 @@
         <el-option v-for="tag in tags" :key="tag.id" :label="tag.name" :value="tag.name" />
       </el-select></el-form-item>
       <el-tabs v-model="tab"><el-tab-pane label="正文" name="write">
+        <ImageUploader :disabled="saving" @uploaded="insertImage" @uploading="uploading = $event" />
         <el-form-item label="内容" prop="content"><el-input v-model="form.content" type="textarea" :rows="16" maxlength="20000" show-word-limit placeholder="支持 Markdown。写下你的经验、问题或想法。" /></el-form-item>
       </el-tab-pane><el-tab-pane label="预览" name="preview"><MarkdownContent :content="form.content" /></el-tab-pane></el-tabs>
-      <div class="mt-5"><el-button type="primary" native-type="submit" :loading="saving">{{ editing ? '保存修改' : '发布帖子' }}</el-button><el-button @click="router.back()">取消</el-button></div>
+      <div class="mt-5"><el-button type="primary" native-type="submit" :loading="saving" :disabled="uploading">{{ editing ? '保存修改' : '发布帖子' }}</el-button><el-button @click="router.back()">取消</el-button></div>
     </el-form>
     <el-empty v-else-if="!loading" description="无法编辑此帖子"><el-button @click="router.push('/')">返回首页</el-button></el-empty>
   </el-card>
@@ -18,14 +19,22 @@
 import { ref, reactive, onMounted } from 'vue'
 import { useRoute, useRouter, onBeforeRouteLeave } from 'vue-router'
 import { ElMessage, ElMessageBox, type FormInstance, type FormRules } from 'element-plus'
-import { getPost, getTags, createPost, updatePost } from '@/api/post'
+import { getTags, createPost, updatePost } from '@/api/post'
+import { getOwnPost } from '@/api/social'
 import type { PostInput, Tag } from '@/types'
 import store from '@/store'
 import MarkdownContent from '@/components/MarkdownContent.vue'
+import ImageUploader from '@/components/ImageUploader.vue'
 const route = useRoute(), router = useRouter(), editing = !!route.params.id
 const form = reactive<PostInput>({ title: '', content: '', tags: [] })
 const formRef = ref<FormInstance>(), tags = ref<Tag[]>([]), tab = ref('write')
 const loading = ref(true), saving = ref(false), ready = ref(false)
+const uploading = ref(false)
+function insertImage(url: string) {
+  const image = `\n\n![图片](${url})\n`
+  if (form.content.length + image.length > 20000) { ElMessage.warning('正文已达到长度限制，请删减后插入图片'); return }
+  form.content += image; ElMessage.success('图片已插入正文，可切换预览查看')
+}
 let initial = '', saved = false
 const rules: FormRules = {
   title: [{ required: true, whitespace: true, message: '请输入标题', trigger: 'blur' }],
@@ -35,7 +44,7 @@ const rules: FormRules = {
 onMounted(async () => {
   try {
     if (editing) {
-      const { data } = await getPost(String(route.params.id))
+      const { data } = await getOwnPost(String(route.params.id))
       if (data.userId !== store.state.user.user?.id) { ElMessage.error('只能编辑自己的帖子'); return }
       Object.assign(form, { title: data.title, content: data.content, tags: data.tags.map(t => t.name), version: data.version })
     }
@@ -48,7 +57,8 @@ async function save() {
   saving.value = true
   try {
     const { data } = editing ? await updatePost(String(route.params.id), form) : await createPost(form)
-    saved = true; ElMessage.success(editing ? '修改已保存' : '帖子已发布'); await router.replace(`/post/${data.id}`)
+    saved = true; ElMessage.success(data.status && data.status !== 'PUBLISHED' ? '内容已提交，等待审核' : editing ? '修改已保存' : '帖子已发布')
+    await router.replace(data.status && data.status !== 'PUBLISHED' ? `/me/posts/${data.id}` : `/post/${data.id}`)
   } catch { /* Preserve text on validation/network/version conflicts. */ } finally { saving.value = false }
 }
 onBeforeRouteLeave(async () => {

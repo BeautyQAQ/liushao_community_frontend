@@ -28,6 +28,7 @@
             <el-form-item>
               <el-button type="primary" :loading="loading" @click="submitForm('ruleForm')">登录</el-button>
               <el-button @click="resetForm('ruleForm')">重置</el-button>
+              <router-link class="ml-4" to="/password/forgot">忘记密码？</router-link>
             </el-form-item>
           </el-form>
         </div>
