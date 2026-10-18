@@ -10,15 +10,16 @@
             status-icon
             :rules="rules"
             ref="formRef"
-            label-width="100px"
+            label-position="top"
             class="demo-ruleForm"
+            @submit.prevent="submitForm('ruleForm')"
           >
             <el-form-item label="账号" prop="name">
-              <el-input v-model="ruleForm.name"></el-input>
+              <el-input v-model="ruleForm.name" autocomplete="username"></el-input>
             </el-form-item>
 
             <el-form-item label="密码" prop="pass">
-              <el-input type="password" v-model="ruleForm.pass" autocomplete="off"></el-input>
+              <el-input type="password" v-model="ruleForm.pass" autocomplete="current-password" show-password></el-input>
             </el-form-item>
 
             <el-form-item label="记住" prop="delivery">
@@ -26,7 +27,7 @@
             </el-form-item>
 
             <el-form-item>
-              <el-button type="primary" :loading="loading" @click="submitForm('ruleForm')">登录</el-button>
+              <el-button type="primary" native-type="submit" :loading="loading">登录</el-button>
               <el-button @click="resetForm('ruleForm')">重置</el-button>
               <router-link class="ml-4" to="/password/forgot">忘记密码？</router-link>
             </el-form-item>

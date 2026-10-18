@@ -12,7 +12,6 @@
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.2",
     "axios": "^1.13.2",
-    "buefy": "^3.1.0",
     "darkreader": "^4.9.117",
     "dayjs": "^1.11.13",
     "dompurify": "^3.4.17",
@@ -30,6 +29,8 @@
     "@types/nprogress": "^0.2.3",
     "@vitejs/plugin-vue": "^6.0.10",
     "typescript": "~5.9.3",
+    "unplugin-element-plus": "^0.11.2",
+    "unplugin-vue-components": "^32.1.0",
     "vite": "^8.3.4",
     "vue-tsc": "^3.3.13"
   },

@@ -1,6 +1,6 @@
 # 流沙社区前端
 
-Vue 3.5.43 + TypeScript strict + Vite 8 + Vue Router 4 + Vuex 4 + Element Plus/Buefy。
+Vue 3.5.43 + TypeScript strict + Vite 8 + Vue Router 4 + Vuex 4 + Element Plus。
 
 ## 开发
 
@@ -65,4 +65,14 @@ Nginx 使用 Docker 自定义网络的 DNS `127.0.0.11`，解析缓存有效期�
 
 使用 Marked 解析 Markdown，并用 DOMPurify 过滤脚本、事件属性等内容；预览与详情复用同一渲染组件。不要绕过该组件直接渲染用户 HTML。
 
-生产构建包含严格类型检查；各阶段接口与浏览器验收结果见工作区根目录 `MODERNIZATION.md`。组件库当前仍全量引入，构建的大分包提示留待后续性能阶段优化。
+生产构建包含严格类型检查；各阶段接口与浏览器验收结果见工作区根目录 `MODERNIZATION.md`。
+
+## 前端加载与体验
+
+Element Plus 的模板组件、指令和样式按需引入；消息和确认框等命令式 API 的样式由 `unplugin-element-plus` 补齐。中文配置由根 `ElConfigProvider` 提供，构建生成的 `src/components.d.ts` 随代码保留，用于首次构建前的模板类型检查。
+
+社区导航与发帖入口使用原生语义元素，已移除 Buefy 依赖、全量框架样式和字体图标加载。主题工具只在启用深色模式时下载；保留已有主题偏好。公共页面布局与必要的工具样式集中于 `src/assets/app.css`。
+
+导航支持键盘展开、Escape 收起并恢复焦点；页面提供跳到主要内容入口。登录/注册支持回车提交与自动填充，手机分页换行。帖子使用骨架占位，公告、提示语和推广区提供加载提示及失败重试。减少动态效果的系统偏好也会用于滚动行为。
+
+性能对比、测量条件和浏览器验收范围见工作区根目录 `FRONTEND_PERFORMANCE.md`。

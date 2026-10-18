@@ -1,45 +1,20 @@
 <template>
-  <el-card class="box-card" shadow="never">
-    <template #header><div>
-      <span>🥳 每日一句</span>
-    </div></template>
-    <div>
-      <div class="has-text-left block">
-        {{ tip.content }}
-      </div>
-      <div class="has-text-right mt-5 block">
-        ——{{ tip.author }}
-      </div>
-    </div>
+  <el-card shadow="never" :aria-busy="loading">
+    <template #header>🥳 每日一句</template>
+    <p v-if="loading" role="status">正在加载…</p>
+    <div v-else-if="failed" role="alert">提示语加载失败。<el-button link type="primary" @click="load">重试</el-button></div>
+    <template v-else><p>{{ tip.content }}</p><p class="has-text-right mt-5">——{{ tip.author }}</p></template>
   </el-card>
 </template>
-
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script setup lang="ts">
+import { onMounted, ref } from 'vue'
 import { getTodayTip } from '@/api/tip'
-
-export default defineComponent({
-    name: 'Tip',
-    data() {
-        return {
-            tip: { content: '', author: '' }
-        }
-    },
-    created() {
-        this.fetchTodayTip()
-    },
-    methods: {
-        fetchTodayTip(){
-            getTodayTip().then((result) => {
-                const { data } = result
-                this.tip = data || { content: '欢迎分享你的经验与想法。', author: '流沙社区' }
-            }).catch((err) => {
-
-            });
-        }
-    }
-})
+const tip = ref({ content: '', author: '' }), loading = ref(true), failed = ref(false)
+async function load() {
+  loading.value = true; failed.value = false
+  try { const { data } = await getTodayTip(); tip.value = data || { content: '欢迎分享你的经验与想法。', author: '流沙社区' } }
+  catch { failed.value = true }
+  finally { loading.value = false }
+}
+onMounted(load)
 </script>
-
-<style scoped>
-</style>

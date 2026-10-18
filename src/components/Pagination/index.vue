@@ -7,6 +7,7 @@
       :layout="layout"
       :page-sizes="pageSizes"
       :total="total"
+      :pager-count="5"
       v-bind="$attrs"
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
@@ -101,4 +102,5 @@ export default defineComponent({
 .pagination-container.hidden {
   display: none;
 }
+:deep(.el-pagination) { flex-wrap: wrap; gap: 8px; }
 </style>

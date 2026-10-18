@@ -1,4 +1,7 @@
 export function scrollTo(to: number, duration = 500, callback?: () => void): void {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    window.scrollTo(0, to); callback?.(); return
+  }
   const start = window.scrollY
   const startTime = performance.now()
   const animate = (now: number) => {

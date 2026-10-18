@@ -1,13 +1,20 @@
 <template>
-  <el-card shadow="never" v-loading="loading">
+  <el-card class="post-list" shadow="never" v-loading="loading" :aria-busy="loading">
     <template #header><el-tabs v-model="activeName" @tab-change="changeTab">
       <el-tab-pane label="最新主题" name="latest" /><el-tab-pane label="近七天热门" name="hot" />
     </el-tabs></template>
+    <p v-if="loading && !articleList.length" class="sr-only" role="status">正在加载主题…</p>
+    <div v-if="loading && !articleList.length" aria-hidden="true">
+      <div v-for="index in page.size" :key="index" class="media">
+        <span class="media-left skeleton-avatar" />
+        <div class="media-content"><span class="skeleton-line" /><span class="skeleton-meta" /><span class="skeleton-tag" /></div>
+      </div>
+    </div>
     <el-empty v-if="!loading && !articleList.length" :description="failed ? '加载失败，请重试' : '暂无主题'">
       <el-button v-if="failed" @click="loadPosts">重试</el-button>
     </el-empty>
     <article v-for="item in articleList" :key="item.id" class="media">
-      <router-link class="media-left" :to="`/member/${item.username}/home`"><el-avatar :src="mediaUrl(item.avatar)">{{ item.alias?.slice(0, 1) || item.username.slice(0, 1) }}</el-avatar></router-link>
+      <router-link class="media-left" :to="`/member/${item.username}/home`" :aria-label="`查看 ${item.alias || item.username} 的主页`"><el-avatar :src="mediaUrl(item.avatar)">{{ item.alias?.slice(0, 1) || item.username.slice(0, 1) }}</el-avatar></router-link>
       <div class="media-content">
         <router-link :to="'/post/' + item.id">{{ item.title }}</router-link>
         <p class="has-text-grey is-size-7 mt-2">
@@ -21,7 +28,7 @@
   </el-card>
 </template>
 <script setup lang="ts">
-import { ref, reactive, watch } from 'vue'
+import { onBeforeUnmount, ref, reactive, watch } from 'vue'
 import dayjs from 'dayjs'
 import { getList } from '@/api/post'
 import type { Post } from '@/types'
@@ -44,4 +51,13 @@ async function loadPosts() {
 }
 function changeTab() { page.current = 1; void loadPosts() }
 watch(() => [props.query, props.tag, props.author], () => { page.current = 1; void loadPosts() }, { immediate: true })
+onBeforeUnmount(() => { revision++ })
 </script>
+<style scoped>
+.post-list { min-height: 320px; }
+.skeleton-avatar, .skeleton-line, .skeleton-meta, .skeleton-tag { display: block; background: #eef1f4; border-radius: 4px; }
+.skeleton-avatar { width: 40px; height: 40px; border-radius: 50%; }
+.skeleton-line { width: 72%; height: 21px; }
+.skeleton-meta { width: 55%; height: 18px; margin-top: 8px; }
+.skeleton-tag { width: 55px; height: 22px; margin-top: 6px; }
+</style>

@@ -12,18 +12,19 @@
             :model="ruleForm"
             status-icon
             :rules="rules"
-            label-width="100px"
+            label-position="top"
             class="demo-ruleForm"
+            @submit.prevent="submitForm('ruleForm')"
           >
             <el-form-item label="账号" prop="name">
-              <el-input v-model="ruleForm.name" />
+              <el-input v-model="ruleForm.name" autocomplete="username" />
             </el-form-item>
 
             <el-form-item label="密码" prop="pass">
               <el-input
                 v-model="ruleForm.pass"
                 type="password"
-                autocomplete="off"
+                autocomplete="new-password"
               />
             </el-form-item>
 
@@ -31,16 +32,16 @@
               <el-input
                 v-model="ruleForm.checkPass"
                 type="password"
-                autocomplete="off"
+                autocomplete="new-password"
               />
             </el-form-item>
 
             <el-form-item label="邮箱" prop="email">
-              <el-input v-model="ruleForm.email" autocomplete="off" />
+              <el-input v-model="ruleForm.email" autocomplete="email" type="email" />
             </el-form-item>
 
             <el-form-item>
-              <el-button type="primary" :loading="loading" @click="submitForm('ruleForm')"
+              <el-button type="primary" native-type="submit" :loading="loading"
                 >立即注册</el-button
               >
               <el-button @click="resetForm('ruleForm')">重置</el-button>
