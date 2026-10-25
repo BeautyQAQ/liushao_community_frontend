@@ -28,6 +28,7 @@
               <router-link :to="`/member/${user?.username}/home`">个人中心</router-link>
               <router-link to="/post/create">发布主题</router-link>
               <router-link to="/me/posts">我的帖子</router-link>
+              <router-link to="/me/drafts">草稿箱</router-link>
               <router-link to="/me/bookmarks">我的收藏</router-link>
               <router-link to="/me/following">我的关注</router-link>
               <router-link to="/me/followers">我的粉丝</router-link>

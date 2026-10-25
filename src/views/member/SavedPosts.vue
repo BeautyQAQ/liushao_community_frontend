@@ -1,6 +1,6 @@
 <template>
   <el-card shadow="never" v-loading="loading">
-    <template #header><div class="section-heading"><h1 class="title is-4">{{ own ? '我的帖子' : '我的收藏' }}</h1><router-link v-if="own" to="/post/create">发布新主题</router-link></div></template>
+    <template #header><div class="section-heading"><h1 class="title is-4">{{ own ? '我的帖子' : '我的收藏' }}</h1><div v-if="own"><router-link class="mr-3" to="/me/drafts">草稿箱</router-link><router-link to="/post/create">发布新主题</router-link></div></div></template>
     <el-empty v-if="!loading && !records.length" :description="failed ? '加载失败，请重试' : own ? '还没有发布过帖子' : '还没有收藏的帖子'">
       <el-button v-if="failed" @click="load">重试</el-button><el-button v-else @click="router.push(own ? '/post/create' : '/')">{{ own ? '发布帖子' : '浏览社区' }}</el-button>
     </el-empty>

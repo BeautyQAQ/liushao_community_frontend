@@ -5,6 +5,7 @@ export default createRouter({ history: createWebHashHistory(), routes: [
   { path: '/login', name: 'Login', component: () => import('../views/auth/Login.vue'), meta: { title: '登录' } },
   { path: '/password/forgot', name: 'RecoverPassword', component: () => import('../views/auth/Recover.vue'), meta: { title: '找回密码' } },
   { path: '/me/posts', name: 'MyPosts', component: () => import('../views/member/SavedPosts.vue'), meta: { title: '我的帖子', requiresAuth: true } },
+  { path: '/me/drafts', name: 'Drafts', component: () => import('../views/member/Drafts.vue'), meta: { title: '草稿箱', requiresAuth: true } },
   { path: '/me/posts/:id', name: 'MyPostDetail', component: () => import('../views/post/Detail.vue'), meta: { title: '我的帖子', requiresAuth: true } },
   { path: '/me/bookmarks', name: 'Bookmarks', component: () => import('../views/member/SavedPosts.vue'), meta: { title: '我的收藏', requiresAuth: true } },
   { path: '/me/following', name: 'Following', component: () => import('../views/member/Connections.vue'), meta: { title: '我的关注', requiresAuth: true } },

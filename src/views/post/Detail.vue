@@ -3,7 +3,7 @@
     <el-card v-loading="loading" shadow="never">
       <template v-if="post">
         <el-alert v-if="!published" class="mb-4" type="warning" :closable="false" :title="post.status === 'PENDING' ? '帖子正在等待审核，仅自己可见' : '帖子暂不可公开访问，仅自己可见'" :description="post.moderationReason || '你可以编辑内容后重新提交审核。'" />
-        <div class="post-heading"><h1 class="title is-3">{{ post.title }}</h1>
+        <div class="post-heading"><div><div v-if="post.top || post.essence" class="mb-3"><el-tag v-if="post.top" class="mr-2">置顶</el-tag><el-tag v-if="post.essence" type="warning">精华</el-tag></div><h1 class="title is-3">{{ post.title }}</h1></div>
           <div v-if="isAuthor" class="buttons"><el-button @click="router.push(`/post/${post.id}/edit`)">编辑</el-button><el-button type="danger" plain :loading="deleting" @click="remove">删除</el-button></div>
         </div>
         <p class="has-text-grey mb-4"><router-link :to="`/member/${post.username}/home`">{{ post.alias || post.username }}</router-link> · {{ dayjs(post.createTime).format('YYYY/MM/DD HH:mm') }} · 浏览 {{ post.view }}</p>

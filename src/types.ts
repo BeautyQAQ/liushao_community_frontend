@@ -3,9 +3,12 @@ export type PublicUser = Omit<User, 'email' | 'active'>
 export interface LoginForm { name: string; pass: string; rememberMe: boolean }
 export interface RegisterForm { name: string; pass: string; checkPass: string; email: string }
 export interface Tag { id: number; name: string; topicCount: number }
-export interface Post { id: number; userId: number; username: string; alias: string; avatar: string; title: string; view: number; createTime: string; modifyTime: string; tags: Tag[] }
+export interface Post { id: number; userId: number; username: string; alias: string; avatar: string; title: string; view: number; createTime: string; modifyTime: string; tags: Tag[]; top: boolean; essence: boolean }
 export interface PostDetail extends Post { content: string; version: number; likes?: number; comments?: number; collects?: number; status?: string; moderationReason?: string }
 export interface PostInput { title: string; content: string; tags: string[]; version?: number }
+export interface DraftInput { title: string; content: string; tags: string[]; postId: number | null; postVersion: number | null; version: number }
+export interface PostDraft extends DraftInput { id: string; updatedAt: string }
+export interface DraftSummary { id: string; postId: number | null; title: string; excerpt: string; version: number; updatedAt: string; localOnly?: boolean }
 export interface Page<T> { content: T[]; totalElements: number; totalPages: number; number: number; size: number }
 export interface Tip { content: string; author: string }
 export interface Promotion { id: number; title: string; link: string }

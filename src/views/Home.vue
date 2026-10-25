@@ -7,7 +7,7 @@
       <el-button v-if="failed" link type="primary" @click="load">公告加载失败，重试</el-button>
     </div>
     <div class="columns">
-      <div class="column is-three-quarters"><PostList /></div>
+      <div class="column is-three-quarters"><PostList discovery /></div>
       <aside class="column" aria-label="社区信息"><CardBar /></aside>
     </div>
   </div>
