@@ -1,0 +1,230 @@
+{
+  "schemaVersion": 1,
+  "description": "目录整理后，从社区前端仓库的新入口执行四项目生产构建、部署冒烟与桌面/手机浏览器回归。",
+  "runId": "20261028t073239z-7008d89d",
+  "command": "CHROMIUM_EXECUTABLE=/path/to/chrome python3 liushao_community_frontend/e2e/run.py --skip-install",
+  "runnerExitCode": 0,
+  "runtime": {
+    "node": "v22.23.1",
+    "playwright": "1.64.0",
+    "chromium": "148.0.7778.96",
+    "browserSource": "CHROMIUM_EXECUTABLE"
+  },
+  "applications": {
+    "authority_management_backend": {
+      "commit": "89679a75507c121365a6283375eb2fdd6465f082",
+      "dirty": true
+    },
+    "authority_management_frontend": {
+      "commit": "ab9fae2871b5e34ad4fb030e086df5700cda2e03",
+      "dirty": true
+    },
+    "liushao_community_backend": {
+      "commit": "bda8528d35568a666884995979dc94597b6bec40",
+      "dirty": true
+    },
+    "liushao_community_frontend": {
+      "commit": "1734d1fd73068d668e105d2336f0c65d5e829fa1",
+      "dirty": true
+    }
+  },
+  "services": {
+    "database": "mysql:8.4",
+    "cache": "redis:7-alpine",
+    "mail": "isolated in-memory SMTP"
+  },
+  "viewports": {
+    "desktop": {
+      "width": 1440,
+      "height": 900
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "deviceScaleFactor": 2
+    }
+  },
+  "stats": {
+    "startTime": "2026-10-28T07:38:32.685Z",
+    "duration": 301811.082,
+    "expected": 16,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "productionBuildsPassed": true,
+  "deploymentSmokePassed": true,
+  "otherChecks": {
+    "backupBundleTestsPassed": 27,
+    "documentLinks": "passed",
+    "composeBuildAndBindPaths": "passed",
+    "scriptSyntax": "passed"
+  },
+  "cleanup": {
+    "containersRemoved": true,
+    "volumesRemoved": true,
+    "networksRemoved": true,
+    "generatedImagesRemoved": true,
+    "privateCredentialsRemoved": true
+  },
+  "tests": [
+    {
+      "title": "社区审核、作者重新提交、账号禁用恢复及审计形成真实闭环",
+      "file": "admin.spec.cjs",
+      "project": "desktop",
+      "status": "passed",
+      "retries": 0
+    },
+    {
+      "title": "后台只读权限、实时撤权、角色变更与密码重置均由服务端执行",
+      "file": "admin.spec.cjs",
+      "project": "desktop",
+      "status": "passed",
+      "retries": 0
+    },
+    {
+      "title": "社区审核、作者重新提交、账号禁用恢复及审计形成真实闭环",
+      "file": "admin.spec.cjs",
+      "project": "mobile",
+      "status": "passed",
+      "retries": 0
+    },
+    {
+      "title": "后台只读权限、实时撤权、角色变更与密码重置均由服务端执行",
+      "file": "admin.spec.cjs",
+      "project": "mobile",
+      "status": "passed",
+      "retries": 0
+    },
+    {
+      "title": "浏览器注册、登录、Markdown 图片发布、编辑与搜索",
+      "file": "community.spec.cjs",
+      "project": "desktop",
+      "status": "passed",
+      "retries": 0
+    },
+    {
+      "title": "头像归属、两用户互动、关注通知及私信隔离",
+      "file": "community.spec.cjs",
+      "project": "desktop",
+      "status": "passed",
+      "retries": 0
+    },
+    {
+      "title": "真实邮件验证与找回密码、一次性验证码和旧会话失效",
+      "file": "community.spec.cjs",
+      "project": "desktop",
+      "status": "passed",
+      "retries": 0
+    },
+    {
+      "title": "浏览器注册、登录、Markdown 图片发布、编辑与搜索",
+      "file": "community.spec.cjs",
+      "project": "mobile",
+      "status": "passed",
+      "retries": 0
+    },
+    {
+      "title": "头像归属、两用户互动、关注通知及私信隔离",
+      "file": "community.spec.cjs",
+      "project": "mobile",
+      "status": "passed",
+      "retries": 0
+    },
+    {
+      "title": "真实邮件验证与找回密码、一次性验证码和旧会话失效",
+      "file": "community.spec.cjs",
+      "project": "mobile",
+      "status": "passed",
+      "retries": 0
+    },
+    {
+      "title": "精华展示和关注动态遵守公开状态、当前账号与取消关注",
+      "file": "creation.spec.cjs",
+      "project": "desktop",
+      "status": "passed",
+      "retries": 0
+    },
+    {
+      "title": "草稿在刷新前保留输入、账号间隔离、草稿箱续写发布及删除形成闭环",
+      "file": "creation.spec.cjs",
+      "project": "desktop",
+      "status": "passed",
+      "retries": 0
+    },
+    {
+      "title": "断网草稿可恢复同步，版本冲突保留正文并允许复制为新主题",
+      "file": "creation.spec.cjs",
+      "project": "desktop",
+      "status": "passed",
+      "retries": 0
+    },
+    {
+      "title": "精华展示和关注动态遵守公开状态、当前账号与取消关注",
+      "file": "creation.spec.cjs",
+      "project": "mobile",
+      "status": "passed",
+      "retries": 0
+    },
+    {
+      "title": "草稿在刷新前保留输入、账号间隔离、草稿箱续写发布及删除形成闭环",
+      "file": "creation.spec.cjs",
+      "project": "mobile",
+      "status": "passed",
+      "retries": 0
+    },
+    {
+      "title": "断网草稿可恢复同步，版本冲突保留正文并允许复制为新主题",
+      "file": "creation.spec.cjs",
+      "project": "mobile",
+      "status": "passed",
+      "retries": 0
+    }
+  ],
+  "sourceSha256": {
+    "authority_management_backend/Dockerfile": "8d8b6feab64a73bc1b1d5c2c5ee8d6c6f29b5cf8e4f409de734665d61c4ddff2",
+    "liushao_community_backend/Dockerfile": "fe12c7127fc3e3e17aa121b906582b29e0c7056b37c2f092c786ba77b09d80f3",
+    "liushao_community_backend/deploy/compose.yaml": "d156134447d32348069396f0f3887435fb31231abe240d9ef0f6f940f32116d2",
+    "liushao_community_backend/deploy/scripts/init-deploy.py": "83f8af11e1ab5b856ba618ad89a82f020129b91eee8871eb91f370b807d789d8",
+    "liushao_community_backend/deploy/scripts/smoke-deploy.py": "82f412a7c6c89021c938c94434361ab2a77832c0fa077ce0af2a8e97c223e57a",
+    "liushao_community_backend/src/main/java/com/liushao/controller/CommunitySocialController.java": "085b718b5b9b589fb795449390b0232ee52f80eb432ccf2f97c96976eea40f40",
+    "liushao_community_backend/src/main/java/com/liushao/controller/PostDraftController.java": "6b755785e1f1a4ad3ab4d84fbdb8881a61e5c994f25ff19a5bcac7714961bd6c",
+    "liushao_community_backend/src/main/java/com/liushao/dao/BmsTopicDao.java": "86f6fb18a00b22ce85324032cff21a1fec1fa4995e7b925c01d7ab5d10b374ba",
+    "liushao_community_backend/src/main/java/com/liushao/dao/BmsTopicDaoImpl.java": "92717d3aea5d50b491021cc065a2624aee16b471349488f2e22399f8a1759929",
+    "liushao_community_backend/src/main/java/com/liushao/model/dto/DraftRequests.java": "11385d9e787a053ad99573b7dfe9495bd94a07e48571252c26aa1254b6478dc0",
+    "liushao_community_backend/src/main/java/com/liushao/model/vo/PostDraft.java": "7d8cc626c8329b4f0602ad4ae6ddc3d3bc4c4737d065d7024a2866cbaa318ec1",
+    "liushao_community_backend/src/main/java/com/liushao/service/BmsPostService.java": "2255bbf329aff0f070d12eb8880759965c36dc332eba86151e41e1d9be5b47b4",
+    "liushao_community_backend/src/main/java/com/liushao/service/PostDraftService.java": "7770ccb96f0e2ecba5d7f8868fa69063d96006c44c21a5f19220c0f0cc3cd60b",
+    "liushao_community_backend/src/main/resources/db/migration/V4__post_drafts.sql": "120899a5a5e92f51ee074cc57765108aa56ea5808310c7e31c2b43e996f6a426",
+    "liushao_community_backend/src/test/java/com/liushao/ContentCreationIntegrationTest.java": "3f64874d2d16fc9263a87333e4317fb4abf1fbfa7f086981e9575412226961ce",
+    "liushao_community_frontend/.dockerignore": "a4ad696983cc09b01769a0e4972b6f4c4ded66271c4913fcd4c3333e76d6f291",
+    "liushao_community_frontend/e2e/check-browser.cjs": "2302b7f7a703e65a12497a43992f43518c96acaf76c513bb5ec33d92ee32057e",
+    "liushao_community_frontend/e2e/compose.yaml": "9f8dcf3ffa021e497c02cde0f6491fe77d732af259a6cceea5ebe60ec80bae06",
+    "liushao_community_frontend/e2e/fixtures.cjs": "a362c1d07caeba040ed60a9615887e19e03aeb196d831c8bdd64fade4ae072d4",
+    "liushao_community_frontend/e2e/package-lock.json": "ba1fba23a9d64b9ea273745f830c23135aec31f6f572fc34bc83a5cb4e3b4068",
+    "liushao_community_frontend/e2e/package.json": "76514fd9cee991a45bc8b68869d517010854eed8cadc451e3aaa94b83ec29bf3",
+    "liushao_community_frontend/e2e/playwright.config.cjs": "4dc76a2545d013e040ab4de8d27164196bc77ef3765176a55dd2e31ec9f0edf8",
+    "liushao_community_frontend/e2e/run.py": "3270ec113a17d63e0cb752b9c9487ca78ece1b4537233b04b9466e6b1f187c20",
+    "liushao_community_frontend/e2e/smtp.cjs": "4f453d1bf4dbebea3a21ff23bb8c00ca3e307e50aa044191e64dcd383ee2d7aa",
+    "liushao_community_frontend/e2e/support.cjs": "b109349ff86f5c4242f3cdf4bc232c4da4bb55e2e371f775861bf0002da0f228",
+    "liushao_community_frontend/e2e/tests/admin.spec.cjs": "52ae43c925ba6e488e955b8a7f502543a938c159426a26578b2ddbc998b018db",
+    "liushao_community_frontend/e2e/tests/community.spec.cjs": "bd41765c5bca363a204f36205554bc419af7b2585194b467e1dd970689e54f91",
+    "liushao_community_frontend/e2e/tests/creation.spec.cjs": "9af9e7ad4e1185ea77c146bc0f4186779770c15e22c29facc17f10383e43fdcb",
+    "liushao_community_frontend/src/api/drafts.ts": "fca3847e9f02be4e59b08ad99332757a66183a44f1592c7c102675b8a5640ff4",
+    "liushao_community_frontend/src/api/post.ts": "d7a444023b734d894c012cf55ac7e34d7c4202ea27d7b4dd899ebfc6b633c3e0",
+    "liushao_community_frontend/src/components/Layout/Header.vue": "99e8ae76b59d4f540b4097f0f09740738866d50916fde24adec75c4fa99355fe",
+    "liushao_community_frontend/src/composables/usePostDraft.ts": "9f9b012b3b8c6a45ae8c237c074c4431e7dd1a731060b8e2ae58441f51040654",
+    "liushao_community_frontend/src/router/index.ts": "22dfcdcf8f3dfbf2004420b08278d82cc8aeb9722ea98d9e4037a41de0435566",
+    "liushao_community_frontend/src/types.ts": "922682b48c1f0950e253d77ff5439441d5303b364366a5b5770ae890a9376fb6",
+    "liushao_community_frontend/src/utils/drafts.ts": "948f313f8dfba7db649472320da313fb5a8264eb193e000eb30b6953b6185093",
+    "liushao_community_frontend/src/views/Home.vue": "35efe4abe6842aa0f9a843265ec79de9363a19dd8f6b9d80e430cec9d8e74611",
+    "liushao_community_frontend/src/views/member/Drafts.vue": "281c92d9c007255790ded03857067603d62050273485dc41ecea98a13947ebca",
+    "liushao_community_frontend/src/views/member/SavedPosts.vue": "a0f5cf12bff48992065097721a653912f76c5c302a69f3b6e84822cff280723f",
+    "liushao_community_frontend/src/views/post/Detail.vue": "3b952bba3c7e5369420416fcf346bc4ddda768403ae0b0ace23a50ac35148f5d",
+    "liushao_community_frontend/src/views/post/Editor.vue": "e85edc49b4708bdb2c7f4e4eb7a5ebd8c6705023bb6324cdc607eafceefb3dc5",
+    "liushao_community_frontend/src/views/post/Index.vue": "484d8b1467bcded91e79664f86541661cd16af3dc6e63b256b33f5e3d467306e"
+  },
+  "limitations": [
+    "Chromium desktop/mobile viewport simulation; not a physical device or cross-browser audit."
+  ]
+}

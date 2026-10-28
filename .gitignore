@@ -23,3 +23,7 @@ pnpm-debug.log*
 *.sw?
 
 .env
+
+# Local browser and performance reports
+.artifacts/
+__pycache__/

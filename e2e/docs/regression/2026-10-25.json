@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "description": "内容发现、草稿创作与原有社区/后台业务的真实接口浏览器回归；仅保存脱敏验收元数据。",
+  "runId": "20261025t054830z-725f9994",
+  "command": "CHROMIUM_EXECUTABLE=<existing Chromium executable> python3 scripts/test-e2e.py --skip-install --maven-settings <temporary default settings.xml>",
+  "runnerExitCode": 0,
+  "runtime": {
+    "node": "v22.23.1",
+    "playwright": "1.64.0",
+    "chromium": "148.0.7778.96",
+    "browserSource": "CHROMIUM_EXECUTABLE"
+  },
+  "applications": {
+    "authority_management_backend": {
+      "commit": "89679a75507c121365a6283375eb2fdd6465f082",
+      "dirty": false
+    },
+    "authority_management_frontend": {
+      "commit": "ab9fae2871b5e34ad4fb030e086df5700cda2e03",
+      "dirty": false
+    },
+    "liushao_community_backend": {
+      "commit": "0a0def684df69de7c9496c328b521497af37c306",
+      "dirty": true
+    },
+    "liushao_community_frontend": {
+      "commit": "13916b219bc2f7ea053edfb8c3fb8b2d84b1908b",
+      "dirty": true
+    }
+  },
+  "services": {
+    "database": "MySQL 8.4",
+    "cache": "Redis 7",
+    "mail": "isolated in-memory SMTP; actual application delivery"
+  },
+  "viewports": {
+    "desktop": {
+      "width": 1440,
+      "height": 900
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "deviceScaleFactor": 2
+    }
+  },
+  "stats": {
+    "startTime": "2026-10-25T05:53:13.800Z",
+    "duration": 292836.232,
+    "expected": 16,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "productionBuildsPassed": true,
+  "deploymentSmokePassed": true,
+  "communityBackendVerification": {
+    "tests": 67,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 1,
+    "passed": 66,
+    "command": "./mvnw --batch-mode --no-transfer-progress verify"
+  },
+  "communityFrontendTypecheckAndBuildPassed": true,
+  "cleanup": {
+    "containersRemoved": true,
+    "volumesRemoved": true,
+    "networksRemoved": true,
+    "generatedImagesRemoved": true,
+    "privateCredentialsRemoved": true
+  },
+  "tests": [
+    {
+      "file": "e2e/tests/admin.spec.cjs",
+      "title": "社区审核、作者重新提交、账号禁用恢复及审计形成真实闭环",
+      "project": "desktop",
+      "status": "passed",
+      "durationMs": 55289,
+      "attempts": 1
+    },
+    {
+      "file": "e2e/tests/admin.spec.cjs",
+      "title": "后台只读权限、实时撤权、角色变更与密码重置均由服务端执行",
+      "project": "desktop",
+      "status": "passed",
+      "durationMs": 16947,
+      "attempts": 1
+    },
+    {
+      "file": "e2e/tests/admin.spec.cjs",
+      "title": "社区审核、作者重新提交、账号禁用恢复及审计形成真实闭环",
+      "project": "mobile",
+      "status": "passed",
+      "durationMs": 63966,
+      "attempts": 1
+    },
+    {
+      "file": "e2e/tests/admin.spec.cjs",
+      "title": "后台只读权限、实时撤权、角色变更与密码重置均由服务端执行",
+      "project": "mobile",
+      "status": "passed",
+      "durationMs": 15434,
+      "attempts": 1
+    },
+    {
+      "file": "e2e/tests/community.spec.cjs",
+      "title": "浏览器注册、登录、Markdown 图片发布、编辑与搜索",
+      "project": "desktop",
+      "status": "passed",
+      "durationMs": 8309,
+      "attempts": 1
+    },
+    {
+      "file": "e2e/tests/community.spec.cjs",
+      "title": "头像归属、两用户互动、关注通知及私信隔离",
+      "project": "desktop",
+      "status": "passed",
+      "durationMs": 16768,
+      "attempts": 1
+    },
+    {
+      "file": "e2e/tests/community.spec.cjs",
+      "title": "真实邮件验证与找回密码、一次性验证码和旧会话失效",
+      "project": "desktop",
+      "status": "passed",
+      "durationMs": 5389,
+      "attempts": 1
+    },
+    {
+      "file": "e2e/tests/community.spec.cjs",
+      "title": "浏览器注册、登录、Markdown 图片发布、编辑与搜索",
+      "project": "mobile",
+      "status": "passed",
+      "durationMs": 6731,
+      "attempts": 1
+    },
+    {
+      "file": "e2e/tests/community.spec.cjs",
+      "title": "头像归属、两用户互动、关注通知及私信隔离",
+      "project": "mobile",
+      "status": "passed",
+      "durationMs": 14556,
+      "attempts": 1
+    },
+    {
+      "file": "e2e/tests/community.spec.cjs",
+      "title": "真实邮件验证与找回密码、一次性验证码和旧会话失效",
+      "project": "mobile",
+      "status": "passed",
+      "durationMs": 3320,
+      "attempts": 1
+    },
+    {
+      "file": "e2e/tests/creation.spec.cjs",
+      "title": "精华展示和关注动态遵守公开状态、当前账号与取消关注",
+      "project": "desktop",
+      "status": "passed",
+      "durationMs": 7717,
+      "attempts": 1
+    },
+    {
+      "file": "e2e/tests/creation.spec.cjs",
+      "title": "草稿在刷新前保留输入、账号间隔离、草稿箱续写发布及删除形成闭环",
+      "project": "desktop",
+      "status": "passed",
+      "durationMs": 9763,
+      "attempts": 1
+    },
+    {
+      "file": "e2e/tests/creation.spec.cjs",
+      "title": "断网草稿可恢复同步，版本冲突保留正文并允许复制为新主题",
+      "project": "desktop",
+      "status": "passed",
+      "durationMs": 22361,
+      "attempts": 1
+    },
+    {
+      "file": "e2e/tests/creation.spec.cjs",
+      "title": "精华展示和关注动态遵守公开状态、当前账号与取消关注",
+      "project": "mobile",
+      "status": "passed",
+      "durationMs": 6778,
+      "attempts": 1
+    },
+    {
+      "file": "e2e/tests/creation.spec.cjs",
+      "title": "草稿在刷新前保留输入、账号间隔离、草稿箱续写发布及删除形成闭环",
+      "project": "mobile",
+      "status": "passed",
+      "durationMs": 27470,
+      "attempts": 1
+    },
+    {
+      "file": "e2e/tests/creation.spec.cjs",
+      "title": "断网草稿可恢复同步，版本冲突保留正文并允许复制为新主题",
+      "project": "mobile",
+      "status": "passed",
+      "durationMs": 8911,
+      "attempts": 1
+    }
+  ],
+  "sourceSha256": {
+    "compose.yaml": "e971ef693489d3f85b35b0701e16b1e4a66937fbca5e0e589b1db32ed07a5f3d",
+    "e2e/check-browser.cjs": "2302b7f7a703e65a12497a43992f43518c96acaf76c513bb5ec33d92ee32057e",
+    "e2e/compose.yaml": "71c4fb0b5c697968072447efb03dcbe3417c49ba68ec8c6483ee6e1c1e5a1681",
+    "e2e/fixtures.cjs": "a362c1d07caeba040ed60a9615887e19e03aeb196d831c8bdd64fade4ae072d4",
+    "e2e/package-lock.json": "ba1fba23a9d64b9ea273745f830c23135aec31f6f572fc34bc83a5cb4e3b4068",
+    "e2e/package.json": "76514fd9cee991a45bc8b68869d517010854eed8cadc451e3aaa94b83ec29bf3",
+    "e2e/playwright.config.cjs": "4dc76a2545d013e040ab4de8d27164196bc77ef3765176a55dd2e31ec9f0edf8",
+    "e2e/smtp.cjs": "4f453d1bf4dbebea3a21ff23bb8c00ca3e307e50aa044191e64dcd383ee2d7aa",
+    "e2e/support.cjs": "ef0ea032767501d018f7ef5a36c8d0860093ad84ccd1163c7298448a4213dbd0",
+    "e2e/tests/admin.spec.cjs": "52ae43c925ba6e488e955b8a7f502543a938c159426a26578b2ddbc998b018db",
+    "e2e/tests/community.spec.cjs": "bd41765c5bca363a204f36205554bc419af7b2585194b467e1dd970689e54f91",
+    "e2e/tests/creation.spec.cjs": "9af9e7ad4e1185ea77c146bc0f4186779770c15e22c29facc17f10383e43fdcb",
+    "liushao_community_backend/src/main/java/com/liushao/controller/CommunitySocialController.java": "085b718b5b9b589fb795449390b0232ee52f80eb432ccf2f97c96976eea40f40",
+    "liushao_community_backend/src/main/java/com/liushao/controller/PostDraftController.java": "6b755785e1f1a4ad3ab4d84fbdb8881a61e5c994f25ff19a5bcac7714961bd6c",
+    "liushao_community_backend/src/main/java/com/liushao/dao/BmsTopicDao.java": "86f6fb18a00b22ce85324032cff21a1fec1fa4995e7b925c01d7ab5d10b374ba",
+    "liushao_community_backend/src/main/java/com/liushao/dao/BmsTopicDaoImpl.java": "92717d3aea5d50b491021cc065a2624aee16b471349488f2e22399f8a1759929",
+    "liushao_community_backend/src/main/java/com/liushao/model/dto/DraftRequests.java": "11385d9e787a053ad99573b7dfe9495bd94a07e48571252c26aa1254b6478dc0",
+    "liushao_community_backend/src/main/java/com/liushao/model/vo/PostDraft.java": "7d8cc626c8329b4f0602ad4ae6ddc3d3bc4c4737d065d7024a2866cbaa318ec1",
+    "liushao_community_backend/src/main/java/com/liushao/service/BmsPostService.java": "2255bbf329aff0f070d12eb8880759965c36dc332eba86151e41e1d9be5b47b4",
+    "liushao_community_backend/src/main/java/com/liushao/service/PostDraftService.java": "7770ccb96f0e2ecba5d7f8868fa69063d96006c44c21a5f19220c0f0cc3cd60b",
+    "liushao_community_backend/src/main/resources/db/migration/V4__post_drafts.sql": "120899a5a5e92f51ee074cc57765108aa56ea5808310c7e31c2b43e996f6a426",
+    "liushao_community_backend/src/test/java/com/liushao/ContentCreationIntegrationTest.java": "3f64874d2d16fc9263a87333e4317fb4abf1fbfa7f086981e9575412226961ce",
+    "liushao_community_frontend/src/api/drafts.ts": "fca3847e9f02be4e59b08ad99332757a66183a44f1592c7c102675b8a5640ff4",
+    "liushao_community_frontend/src/api/post.ts": "d7a444023b734d894c012cf55ac7e34d7c4202ea27d7b4dd899ebfc6b633c3e0",
+    "liushao_community_frontend/src/components/Layout/Header.vue": "99e8ae76b59d4f540b4097f0f09740738866d50916fde24adec75c4fa99355fe",
+    "liushao_community_frontend/src/composables/usePostDraft.ts": "9f9b012b3b8c6a45ae8c237c074c4431e7dd1a731060b8e2ae58441f51040654",
+    "liushao_community_frontend/src/router/index.ts": "22dfcdcf8f3dfbf2004420b08278d82cc8aeb9722ea98d9e4037a41de0435566",
+    "liushao_community_frontend/src/types.ts": "922682b48c1f0950e253d77ff5439441d5303b364366a5b5770ae890a9376fb6",
+    "liushao_community_frontend/src/utils/drafts.ts": "948f313f8dfba7db649472320da313fb5a8264eb193e000eb30b6953b6185093",
+    "liushao_community_frontend/src/views/Home.vue": "35efe4abe6842aa0f9a843265ec79de9363a19dd8f6b9d80e430cec9d8e74611",
+    "liushao_community_frontend/src/views/member/Drafts.vue": "281c92d9c007255790ded03857067603d62050273485dc41ecea98a13947ebca",
+    "liushao_community_frontend/src/views/member/SavedPosts.vue": "a0f5cf12bff48992065097721a653912f76c5c302a69f3b6e84822cff280723f",
+    "liushao_community_frontend/src/views/post/Detail.vue": "3b952bba3c7e5369420416fcf346bc4ddda768403ae0b0ace23a50ac35148f5d",
+    "liushao_community_frontend/src/views/post/Editor.vue": "e85edc49b4708bdb2c7f4e4eb7a5ebd8c6705023bb6324cdc607eafceefb3dc5",
+    "liushao_community_frontend/src/views/post/Index.vue": "484d8b1467bcded91e79664f86541661cd16af3dc6e63b256b33f5e3d467306e",
+    "scripts/init-deploy.py": "e475af36d81fa9a7470bba7042009e8f16f282f7c697d16bffff18b19e355db0",
+    "scripts/smoke-deploy.py": "82f412a7c6c89021c938c94434361ab2a77832c0fa077ce0af2a8e97c223e57a",
+    "scripts/test-e2e.py": "aa44d12026dfe0e83f092af36b2660dab539ff241ab561fd68fbd89946bd30ff"
+  },
+  "limitations": [
+    "Chromium only; mobile viewport emulation, not physical-device testing.",
+    "The recorded existing Chromium executable was used; the Playwright-managed browser download was not validated.",
+    "Formal SMTP authentication, TLS and external deliverability were not tested.",
+    "The optional real-MySQL time-zone unit-test group was not enabled in the standalone Maven run; the browser suite used real MySQL.",
+    "A temporary default Maven settings file was mounted for image builds because the local Docker Maven cache contained an empty settings.xml.",
+    "CI and root-workspace version management were deferred by request; no formal deployment was performed."
+  ]
+}

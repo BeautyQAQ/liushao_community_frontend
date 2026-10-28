@@ -1,0 +1,1425 @@
+{
+  "date": "2026-10-18T07:34:05.314Z",
+  "browser": "148.0.7778.96",
+  "apiDelayMs": 100,
+  "gzipLevel": 6,
+  "samples": [
+    {
+      "run": 1,
+      "app": "admin",
+      "profile": "desktop",
+      "contentReady": 371.10000002384186,
+      "fcp": 292,
+      "lcp": 356,
+      "cls": 0.0009286908436213991,
+      "layoutShifts": [
+        {
+          "time": 342,
+          "value": 0.0009286908436213991
+        }
+      ],
+      "overflow": false,
+      "resources": [
+        {
+          "name": "/assets/index-DlNEXu0G.js",
+          "transfer": 274637,
+          "encoded": 274337,
+          "decoded": 869908
+        },
+        {
+          "name": "/assets/rolldown-runtime-hePW80VL.js",
+          "transfer": 728,
+          "encoded": 428,
+          "decoded": 716
+        },
+        {
+          "name": "/assets/store-Sy-0LFfn.js",
+          "transfer": 29936,
+          "encoded": 29636,
+          "decoded": 79205
+        },
+        {
+          "name": "/assets/axios-D0f1maKL.js",
+          "transfer": 49918,
+          "encoded": 49618,
+          "decoded": 137937
+        },
+        {
+          "name": "/assets/_plugin-vue_export-helper-BDNMzG2s.js",
+          "transfer": 399,
+          "encoded": 99,
+          "decoded": 84
+        },
+        {
+          "name": "/assets/index-B1SQ1jU5.css",
+          "transfer": 48846,
+          "encoded": 48546,
+          "decoded": 361766
+        },
+        {
+          "name": "/assets/Login-BLilQ9nK.js",
+          "transfer": 1619,
+          "encoded": 1319,
+          "decoded": 2574
+        },
+        {
+          "name": "/assets/Login-Djn9Euze.css",
+          "transfer": 684,
+          "encoded": 384,
+          "decoded": 765
+        },
+        {
+          "name": "/api/captcha",
+          "transfer": 639,
+          "encoded": 339,
+          "decoded": 339
+        },
+        {
+          "name": "/favicon.ico",
+          "transfer": 4586,
+          "encoded": 4286,
+          "decoded": 4286
+        }
+      ],
+      "assetRequests": 8,
+      "assetEncodedBytes": 404367,
+      "errors": []
+    },
+    {
+      "run": 2,
+      "app": "admin",
+      "profile": "desktop",
+      "contentReady": 387.39999997615814,
+      "fcp": 320,
+      "lcp": 356,
+      "cls": 0.0009286908436213991,
+      "layoutShifts": [
+        {
+          "time": 344.2000000476837,
+          "value": 0.0009286908436213991
+        }
+      ],
+      "overflow": false,
+      "resources": [
+        {
+          "name": "/assets/index-DlNEXu0G.js",
+          "transfer": 274637,
+          "encoded": 274337,
+          "decoded": 869908
+        },
+        {
+          "name": "/assets/rolldown-runtime-hePW80VL.js",
+          "transfer": 728,
+          "encoded": 428,
+          "decoded": 716
+        },
+        {
+          "name": "/assets/store-Sy-0LFfn.js",
+          "transfer": 29936,
+          "encoded": 29636,
+          "decoded": 79205
+        },
+        {
+          "name": "/assets/axios-D0f1maKL.js",
+          "transfer": 49918,
+          "encoded": 49618,
+          "decoded": 137937
+        },
+        {
+          "name": "/assets/_plugin-vue_export-helper-BDNMzG2s.js",
+          "transfer": 399,
+          "encoded": 99,
+          "decoded": 84
+        },
+        {
+          "name": "/assets/index-B1SQ1jU5.css",
+          "transfer": 48846,
+          "encoded": 48546,
+          "decoded": 361766
+        },
+        {
+          "name": "/assets/Login-BLilQ9nK.js",
+          "transfer": 1619,
+          "encoded": 1319,
+          "decoded": 2574
+        },
+        {
+          "name": "/assets/Login-Djn9Euze.css",
+          "transfer": 684,
+          "encoded": 384,
+          "decoded": 765
+        },
+        {
+          "name": "/api/captcha",
+          "transfer": 639,
+          "encoded": 339,
+          "decoded": 339
+        },
+        {
+          "name": "/favicon.ico",
+          "transfer": 4586,
+          "encoded": 4286,
+          "decoded": 4286
+        }
+      ],
+      "assetRequests": 8,
+      "assetEncodedBytes": 404367,
+      "errors": []
+    },
+    {
+      "run": 3,
+      "app": "admin",
+      "profile": "desktop",
+      "contentReady": 392.10000002384186,
+      "fcp": 316,
+      "lcp": 372,
+      "cls": 0.0009286908436213991,
+      "layoutShifts": [
+        {
+          "time": 357.10000002384186,
+          "value": 0.0009286908436213991
+        }
+      ],
+      "overflow": false,
+      "resources": [
+        {
+          "name": "/assets/index-DlNEXu0G.js",
+          "transfer": 274637,
+          "encoded": 274337,
+          "decoded": 869908
+        },
+        {
+          "name": "/assets/rolldown-runtime-hePW80VL.js",
+          "transfer": 728,
+          "encoded": 428,
+          "decoded": 716
+        },
+        {
+          "name": "/assets/store-Sy-0LFfn.js",
+          "transfer": 29936,
+          "encoded": 29636,
+          "decoded": 79205
+        },
+        {
+          "name": "/assets/axios-D0f1maKL.js",
+          "transfer": 49918,
+          "encoded": 49618,
+          "decoded": 137937
+        },
+        {
+          "name": "/assets/_plugin-vue_export-helper-BDNMzG2s.js",
+          "transfer": 399,
+          "encoded": 99,
+          "decoded": 84
+        },
+        {
+          "name": "/assets/index-B1SQ1jU5.css",
+          "transfer": 48846,
+          "encoded": 48546,
+          "decoded": 361766
+        },
+        {
+          "name": "/assets/Login-BLilQ9nK.js",
+          "transfer": 1619,
+          "encoded": 1319,
+          "decoded": 2574
+        },
+        {
+          "name": "/assets/Login-Djn9Euze.css",
+          "transfer": 684,
+          "encoded": 384,
+          "decoded": 765
+        },
+        {
+          "name": "/api/captcha",
+          "transfer": 639,
+          "encoded": 339,
+          "decoded": 339
+        },
+        {
+          "name": "/favicon.ico",
+          "transfer": 4586,
+          "encoded": 4286,
+          "decoded": 4286
+        }
+      ],
+      "assetRequests": 8,
+      "assetEncodedBytes": 404367,
+      "errors": []
+    },
+    {
+      "run": 1,
+      "app": "admin",
+      "profile": "mobile-4g-4x",
+      "contentReady": 3166.600000023842,
+      "fcp": 3032,
+      "lcp": 3148,
+      "cls": 0,
+      "layoutShifts": [],
+      "overflow": false,
+      "resources": [
+        {
+          "name": "/assets/index-DlNEXu0G.js",
+          "transfer": 274637,
+          "encoded": 274337,
+          "decoded": 869908
+        },
+        {
+          "name": "/assets/rolldown-runtime-hePW80VL.js",
+          "transfer": 728,
+          "encoded": 428,
+          "decoded": 716
+        },
+        {
+          "name": "/assets/store-Sy-0LFfn.js",
+          "transfer": 29936,
+          "encoded": 29636,
+          "decoded": 79205
+        },
+        {
+          "name": "/assets/axios-D0f1maKL.js",
+          "transfer": 49918,
+          "encoded": 49618,
+          "decoded": 137937
+        },
+        {
+          "name": "/assets/_plugin-vue_export-helper-BDNMzG2s.js",
+          "transfer": 399,
+          "encoded": 99,
+          "decoded": 84
+        },
+        {
+          "name": "/assets/index-B1SQ1jU5.css",
+          "transfer": 48846,
+          "encoded": 48546,
+          "decoded": 361766
+        },
+        {
+          "name": "/assets/Login-BLilQ9nK.js",
+          "transfer": 1619,
+          "encoded": 1319,
+          "decoded": 2574
+        },
+        {
+          "name": "/assets/Login-Djn9Euze.css",
+          "transfer": 684,
+          "encoded": 384,
+          "decoded": 765
+        },
+        {
+          "name": "/favicon.ico",
+          "transfer": 4586,
+          "encoded": 4286,
+          "decoded": 4286
+        },
+        {
+          "name": "/api/captcha",
+          "transfer": 639,
+          "encoded": 339,
+          "decoded": 339
+        }
+      ],
+      "assetRequests": 8,
+      "assetEncodedBytes": 404367,
+      "errors": []
+    },
+    {
+      "run": 2,
+      "app": "admin",
+      "profile": "mobile-4g-4x",
+      "contentReady": 3533.399999976158,
+      "fcp": 3424,
+      "lcp": 3516,
+      "cls": 0,
+      "layoutShifts": [],
+      "overflow": false,
+      "resources": [
+        {
+          "name": "/assets/index-DlNEXu0G.js",
+          "transfer": 274637,
+          "encoded": 274337,
+          "decoded": 869908
+        },
+        {
+          "name": "/assets/rolldown-runtime-hePW80VL.js",
+          "transfer": 728,
+          "encoded": 428,
+          "decoded": 716
+        },
+        {
+          "name": "/assets/store-Sy-0LFfn.js",
+          "transfer": 29936,
+          "encoded": 29636,
+          "decoded": 79205
+        },
+        {
+          "name": "/assets/axios-D0f1maKL.js",
+          "transfer": 49918,
+          "encoded": 49618,
+          "decoded": 137937
+        },
+        {
+          "name": "/assets/_plugin-vue_export-helper-BDNMzG2s.js",
+          "transfer": 399,
+          "encoded": 99,
+          "decoded": 84
+        },
+        {
+          "name": "/assets/index-B1SQ1jU5.css",
+          "transfer": 48846,
+          "encoded": 48546,
+          "decoded": 361766
+        },
+        {
+          "name": "/assets/Login-BLilQ9nK.js",
+          "transfer": 1619,
+          "encoded": 1319,
+          "decoded": 2574
+        },
+        {
+          "name": "/assets/Login-Djn9Euze.css",
+          "transfer": 684,
+          "encoded": 384,
+          "decoded": 765
+        },
+        {
+          "name": "/favicon.ico",
+          "transfer": 4586,
+          "encoded": 4286,
+          "decoded": 4286
+        },
+        {
+          "name": "/api/captcha",
+          "transfer": 639,
+          "encoded": 339,
+          "decoded": 339
+        }
+      ],
+      "assetRequests": 8,
+      "assetEncodedBytes": 404367,
+      "errors": []
+    },
+    {
+      "run": 3,
+      "app": "admin",
+      "profile": "mobile-4g-4x",
+      "contentReady": 3145.0999999046326,
+      "fcp": 3024,
+      "lcp": 3128,
+      "cls": 0,
+      "layoutShifts": [],
+      "overflow": false,
+      "resources": [
+        {
+          "name": "/assets/index-DlNEXu0G.js",
+          "transfer": 274637,
+          "encoded": 274337,
+          "decoded": 869908
+        },
+        {
+          "name": "/assets/rolldown-runtime-hePW80VL.js",
+          "transfer": 728,
+          "encoded": 428,
+          "decoded": 716
+        },
+        {
+          "name": "/assets/store-Sy-0LFfn.js",
+          "transfer": 29936,
+          "encoded": 29636,
+          "decoded": 79205
+        },
+        {
+          "name": "/assets/axios-D0f1maKL.js",
+          "transfer": 49918,
+          "encoded": 49618,
+          "decoded": 137937
+        },
+        {
+          "name": "/assets/_plugin-vue_export-helper-BDNMzG2s.js",
+          "transfer": 399,
+          "encoded": 99,
+          "decoded": 84
+        },
+        {
+          "name": "/assets/index-B1SQ1jU5.css",
+          "transfer": 48846,
+          "encoded": 48546,
+          "decoded": 361766
+        },
+        {
+          "name": "/assets/Login-BLilQ9nK.js",
+          "transfer": 1619,
+          "encoded": 1319,
+          "decoded": 2574
+        },
+        {
+          "name": "/assets/Login-Djn9Euze.css",
+          "transfer": 684,
+          "encoded": 384,
+          "decoded": 765
+        },
+        {
+          "name": "/favicon.ico",
+          "transfer": 4586,
+          "encoded": 4286,
+          "decoded": 4286
+        },
+        {
+          "name": "/api/captcha",
+          "transfer": 639,
+          "encoded": 339,
+          "decoded": 339
+        }
+      ],
+      "assetRequests": 8,
+      "assetEncodedBytes": 404367,
+      "errors": []
+    },
+    {
+      "run": 1,
+      "app": "community",
+      "profile": "desktop",
+      "contentReady": 816.3999999761581,
+      "fcp": 528,
+      "lcp": 528,
+      "cls": 0.09742473060806756,
+      "layoutShifts": [
+        {
+          "time": 641.6999999284744,
+          "value": 0.004115740740740741
+        },
+        {
+          "time": 784.8999999761581,
+          "value": 0.09330898986732682
+        }
+      ],
+      "overflow": false,
+      "resources": [
+        {
+          "name": "/assets/index-0KamMuHy.js",
+          "transfer": 389317,
+          "encoded": 389017,
+          "decoded": 1303089
+        },
+        {
+          "name": "/assets/rolldown-runtime-hePW80VL.js",
+          "transfer": 728,
+          "encoded": 428,
+          "decoded": 716
+        },
+        {
+          "name": "/assets/runtime-core.esm-bundler-DlpVMdG9.js",
+          "transfer": 25609,
+          "encoded": 25309,
+          "decoded": 65343
+        },
+        {
+          "name": "/assets/preload-helper-BLdHbfdN.js",
+          "transfer": 1097,
+          "encoded": 797,
+          "decoded": 1519
+        },
+        {
+          "name": "/assets/request-CXT2U788.js",
+          "transfer": 50667,
+          "encoded": 50367,
+          "decoded": 139576
+        },
+        {
+          "name": "/assets/vuex.esm-bundler-kZjoUkMW.js",
+          "transfer": 4880,
+          "encoded": 4580,
+          "decoded": 13778
+        },
+        {
+          "name": "/assets/vue-router-BA6uidzT.js",
+          "transfer": 9906,
+          "encoded": 9606,
+          "decoded": 25035
+        },
+        {
+          "name": "/assets/auth-Tiju-qeR.js",
+          "transfer": 606,
+          "encoded": 306,
+          "decoded": 812
+        },
+        {
+          "name": "/assets/store-4j4tMoW6.js",
+          "transfer": 849,
+          "encoded": 549,
+          "decoded": 901
+        },
+        {
+          "name": "/assets/social-CyZ1IcV4.js",
+          "transfer": 825,
+          "encoded": 525,
+          "decoded": 1503
+        },
+        {
+          "name": "/assets/index-lj4jU-5L.css",
+          "transfer": 141498,
+          "encoded": 141198,
+          "decoded": 1216787
+        },
+        {
+          "name": "/assets/Home-CpfGExos.js",
+          "transfer": 1741,
+          "encoded": 1441,
+          "decoded": 3319
+        },
+        {
+          "name": "/assets/Index-BvTT_-hG.js",
+          "transfer": 1737,
+          "encoded": 1437,
+          "decoded": 2711
+        },
+        {
+          "name": "/assets/post-xBHldvXB.js",
+          "transfer": 533,
+          "encoded": 233,
+          "decoded": 374
+        },
+        {
+          "name": "/assets/Pagination-qljCKE_-.js",
+          "transfer": 1147,
+          "encoded": 847,
+          "decoded": 1742
+        },
+        {
+          "name": "/assets/Pagination-ay8rfX32.css",
+          "transfer": 399,
+          "encoded": 99,
+          "decoded": 113
+        },
+        {
+          "name": "/assets/media-Cx2E1sty.js",
+          "transfer": 416,
+          "encoded": 116,
+          "decoded": 106
+        },
+        {
+          "name": "/api/billboard/show",
+          "transfer": 417,
+          "encoded": 117,
+          "decoded": 117
+        },
+        {
+          "name": "/api/post/list",
+          "transfer": 2831,
+          "encoded": 2531,
+          "decoded": 2531
+        },
+        {
+          "name": "/api/tip/today",
+          "transfer": 420,
+          "encoded": 120,
+          "decoded": 120
+        },
+        {
+          "name": "/api/promotion/all",
+          "transfer": 403,
+          "encoded": 103,
+          "decoded": 103
+        },
+        {
+          "name": "/favicon.ico",
+          "transfer": 4586,
+          "encoded": 4286,
+          "decoded": 4286
+        }
+      ],
+      "assetRequests": 17,
+      "assetEncodedBytes": 626855,
+      "errors": []
+    },
+    {
+      "run": 2,
+      "app": "community",
+      "profile": "desktop",
+      "contentReady": 776.8999999761581,
+      "fcp": 476,
+      "lcp": 476,
+      "cls": 0.09742473060806756,
+      "layoutShifts": [
+        {
+          "time": 604.6000000238419,
+          "value": 0.004115740740740741
+        },
+        {
+          "time": 745.3999999761581,
+          "value": 0.09330898986732682
+        }
+      ],
+      "overflow": false,
+      "resources": [
+        {
+          "name": "/assets/index-0KamMuHy.js",
+          "transfer": 389317,
+          "encoded": 389017,
+          "decoded": 1303089
+        },
+        {
+          "name": "/assets/rolldown-runtime-hePW80VL.js",
+          "transfer": 728,
+          "encoded": 428,
+          "decoded": 716
+        },
+        {
+          "name": "/assets/runtime-core.esm-bundler-DlpVMdG9.js",
+          "transfer": 25609,
+          "encoded": 25309,
+          "decoded": 65343
+        },
+        {
+          "name": "/assets/preload-helper-BLdHbfdN.js",
+          "transfer": 1097,
+          "encoded": 797,
+          "decoded": 1519
+        },
+        {
+          "name": "/assets/request-CXT2U788.js",
+          "transfer": 50667,
+          "encoded": 50367,
+          "decoded": 139576
+        },
+        {
+          "name": "/assets/vuex.esm-bundler-kZjoUkMW.js",
+          "transfer": 4880,
+          "encoded": 4580,
+          "decoded": 13778
+        },
+        {
+          "name": "/assets/vue-router-BA6uidzT.js",
+          "transfer": 9906,
+          "encoded": 9606,
+          "decoded": 25035
+        },
+        {
+          "name": "/assets/auth-Tiju-qeR.js",
+          "transfer": 606,
+          "encoded": 306,
+          "decoded": 812
+        },
+        {
+          "name": "/assets/store-4j4tMoW6.js",
+          "transfer": 849,
+          "encoded": 549,
+          "decoded": 901
+        },
+        {
+          "name": "/assets/social-CyZ1IcV4.js",
+          "transfer": 825,
+          "encoded": 525,
+          "decoded": 1503
+        },
+        {
+          "name": "/assets/index-lj4jU-5L.css",
+          "transfer": 141498,
+          "encoded": 141198,
+          "decoded": 1216787
+        },
+        {
+          "name": "/assets/Home-CpfGExos.js",
+          "transfer": 1741,
+          "encoded": 1441,
+          "decoded": 3319
+        },
+        {
+          "name": "/assets/Index-BvTT_-hG.js",
+          "transfer": 1737,
+          "encoded": 1437,
+          "decoded": 2711
+        },
+        {
+          "name": "/assets/post-xBHldvXB.js",
+          "transfer": 533,
+          "encoded": 233,
+          "decoded": 374
+        },
+        {
+          "name": "/assets/Pagination-qljCKE_-.js",
+          "transfer": 1147,
+          "encoded": 847,
+          "decoded": 1742
+        },
+        {
+          "name": "/assets/Pagination-ay8rfX32.css",
+          "transfer": 399,
+          "encoded": 99,
+          "decoded": 113
+        },
+        {
+          "name": "/assets/media-Cx2E1sty.js",
+          "transfer": 416,
+          "encoded": 116,
+          "decoded": 106
+        },
+        {
+          "name": "/api/billboard/show",
+          "transfer": 417,
+          "encoded": 117,
+          "decoded": 117
+        },
+        {
+          "name": "/api/post/list",
+          "transfer": 2831,
+          "encoded": 2531,
+          "decoded": 2531
+        },
+        {
+          "name": "/api/tip/today",
+          "transfer": 420,
+          "encoded": 120,
+          "decoded": 120
+        },
+        {
+          "name": "/api/promotion/all",
+          "transfer": 403,
+          "encoded": 103,
+          "decoded": 103
+        },
+        {
+          "name": "/favicon.ico",
+          "transfer": 4586,
+          "encoded": 4286,
+          "decoded": 4286
+        }
+      ],
+      "assetRequests": 17,
+      "assetEncodedBytes": 626855,
+      "errors": []
+    },
+    {
+      "run": 3,
+      "app": "community",
+      "profile": "desktop",
+      "contentReady": 698.6000000238419,
+      "fcp": 424,
+      "lcp": 424,
+      "cls": 0.09742473060806756,
+      "layoutShifts": [
+        {
+          "time": 530.5,
+          "value": 0.004115740740740741
+        },
+        {
+          "time": 666,
+          "value": 0.09330898986732682
+        }
+      ],
+      "overflow": false,
+      "resources": [
+        {
+          "name": "/assets/index-0KamMuHy.js",
+          "transfer": 389317,
+          "encoded": 389017,
+          "decoded": 1303089
+        },
+        {
+          "name": "/assets/rolldown-runtime-hePW80VL.js",
+          "transfer": 728,
+          "encoded": 428,
+          "decoded": 716
+        },
+        {
+          "name": "/assets/runtime-core.esm-bundler-DlpVMdG9.js",
+          "transfer": 25609,
+          "encoded": 25309,
+          "decoded": 65343
+        },
+        {
+          "name": "/assets/preload-helper-BLdHbfdN.js",
+          "transfer": 1097,
+          "encoded": 797,
+          "decoded": 1519
+        },
+        {
+          "name": "/assets/request-CXT2U788.js",
+          "transfer": 50667,
+          "encoded": 50367,
+          "decoded": 139576
+        },
+        {
+          "name": "/assets/vuex.esm-bundler-kZjoUkMW.js",
+          "transfer": 4880,
+          "encoded": 4580,
+          "decoded": 13778
+        },
+        {
+          "name": "/assets/vue-router-BA6uidzT.js",
+          "transfer": 9906,
+          "encoded": 9606,
+          "decoded": 25035
+        },
+        {
+          "name": "/assets/auth-Tiju-qeR.js",
+          "transfer": 606,
+          "encoded": 306,
+          "decoded": 812
+        },
+        {
+          "name": "/assets/store-4j4tMoW6.js",
+          "transfer": 849,
+          "encoded": 549,
+          "decoded": 901
+        },
+        {
+          "name": "/assets/social-CyZ1IcV4.js",
+          "transfer": 825,
+          "encoded": 525,
+          "decoded": 1503
+        },
+        {
+          "name": "/assets/index-lj4jU-5L.css",
+          "transfer": 141498,
+          "encoded": 141198,
+          "decoded": 1216787
+        },
+        {
+          "name": "/assets/Home-CpfGExos.js",
+          "transfer": 1741,
+          "encoded": 1441,
+          "decoded": 3319
+        },
+        {
+          "name": "/assets/Index-BvTT_-hG.js",
+          "transfer": 1737,
+          "encoded": 1437,
+          "decoded": 2711
+        },
+        {
+          "name": "/assets/post-xBHldvXB.js",
+          "transfer": 533,
+          "encoded": 233,
+          "decoded": 374
+        },
+        {
+          "name": "/assets/Pagination-qljCKE_-.js",
+          "transfer": 1147,
+          "encoded": 847,
+          "decoded": 1742
+        },
+        {
+          "name": "/assets/Pagination-ay8rfX32.css",
+          "transfer": 399,
+          "encoded": 99,
+          "decoded": 113
+        },
+        {
+          "name": "/assets/media-Cx2E1sty.js",
+          "transfer": 416,
+          "encoded": 116,
+          "decoded": 106
+        },
+        {
+          "name": "/api/billboard/show",
+          "transfer": 417,
+          "encoded": 117,
+          "decoded": 117
+        },
+        {
+          "name": "/api/post/list",
+          "transfer": 2831,
+          "encoded": 2531,
+          "decoded": 2531
+        },
+        {
+          "name": "/api/tip/today",
+          "transfer": 420,
+          "encoded": 120,
+          "decoded": 120
+        },
+        {
+          "name": "/api/promotion/all",
+          "transfer": 403,
+          "encoded": 103,
+          "decoded": 103
+        },
+        {
+          "name": "/favicon.ico",
+          "transfer": 4586,
+          "encoded": 4286,
+          "decoded": 4286
+        }
+      ],
+      "assetRequests": 17,
+      "assetEncodedBytes": 626855,
+      "errors": []
+    },
+    {
+      "run": 1,
+      "app": "community",
+      "profile": "mobile-4g-4x",
+      "contentReady": 5672.800000071526,
+      "fcp": 4456,
+      "lcp": 4456,
+      "cls": 0.610611068588203,
+      "layoutShifts": [
+        {
+          "time": 5214.100000023842,
+          "value": 0.025594663192650656
+        },
+        {
+          "time": 5535.5,
+          "value": 0.5850164053955523
+        }
+      ],
+      "overflow": false,
+      "resources": [
+        {
+          "name": "/assets/index-0KamMuHy.js",
+          "transfer": 389317,
+          "encoded": 389017,
+          "decoded": 1303089
+        },
+        {
+          "name": "/assets/rolldown-runtime-hePW80VL.js",
+          "transfer": 728,
+          "encoded": 428,
+          "decoded": 716
+        },
+        {
+          "name": "/assets/runtime-core.esm-bundler-DlpVMdG9.js",
+          "transfer": 25609,
+          "encoded": 25309,
+          "decoded": 65343
+        },
+        {
+          "name": "/assets/preload-helper-BLdHbfdN.js",
+          "transfer": 1097,
+          "encoded": 797,
+          "decoded": 1519
+        },
+        {
+          "name": "/assets/request-CXT2U788.js",
+          "transfer": 50667,
+          "encoded": 50367,
+          "decoded": 139576
+        },
+        {
+          "name": "/assets/vuex.esm-bundler-kZjoUkMW.js",
+          "transfer": 4880,
+          "encoded": 4580,
+          "decoded": 13778
+        },
+        {
+          "name": "/assets/vue-router-BA6uidzT.js",
+          "transfer": 9906,
+          "encoded": 9606,
+          "decoded": 25035
+        },
+        {
+          "name": "/assets/auth-Tiju-qeR.js",
+          "transfer": 606,
+          "encoded": 306,
+          "decoded": 812
+        },
+        {
+          "name": "/assets/store-4j4tMoW6.js",
+          "transfer": 849,
+          "encoded": 549,
+          "decoded": 901
+        },
+        {
+          "name": "/assets/social-CyZ1IcV4.js",
+          "transfer": 825,
+          "encoded": 525,
+          "decoded": 1503
+        },
+        {
+          "name": "/assets/index-lj4jU-5L.css",
+          "transfer": 141498,
+          "encoded": 141198,
+          "decoded": 1216787
+        },
+        {
+          "name": "/assets/Home-CpfGExos.js",
+          "transfer": 1741,
+          "encoded": 1441,
+          "decoded": 3319
+        },
+        {
+          "name": "/assets/Index-BvTT_-hG.js",
+          "transfer": 1737,
+          "encoded": 1437,
+          "decoded": 2711
+        },
+        {
+          "name": "/assets/post-xBHldvXB.js",
+          "transfer": 533,
+          "encoded": 233,
+          "decoded": 374
+        },
+        {
+          "name": "/assets/Pagination-qljCKE_-.js",
+          "transfer": 1147,
+          "encoded": 847,
+          "decoded": 1742
+        },
+        {
+          "name": "/assets/Pagination-ay8rfX32.css",
+          "transfer": 399,
+          "encoded": 99,
+          "decoded": 113
+        },
+        {
+          "name": "/assets/media-Cx2E1sty.js",
+          "transfer": 416,
+          "encoded": 116,
+          "decoded": 106
+        },
+        {
+          "name": "/favicon.ico",
+          "transfer": 4586,
+          "encoded": 4286,
+          "decoded": 4286
+        },
+        {
+          "name": "/api/billboard/show",
+          "transfer": 417,
+          "encoded": 117,
+          "decoded": 117
+        },
+        {
+          "name": "/api/post/list",
+          "transfer": 2831,
+          "encoded": 2531,
+          "decoded": 2531
+        },
+        {
+          "name": "/api/tip/today",
+          "transfer": 420,
+          "encoded": 120,
+          "decoded": 120
+        },
+        {
+          "name": "/api/promotion/all",
+          "transfer": 403,
+          "encoded": 103,
+          "decoded": 103
+        }
+      ],
+      "assetRequests": 17,
+      "assetEncodedBytes": 626855,
+      "errors": []
+    },
+    {
+      "run": 2,
+      "app": "community",
+      "profile": "mobile-4g-4x",
+      "contentReady": 5457.600000023842,
+      "fcp": 4260,
+      "lcp": 4260,
+      "cls": 0.6200285632997163,
+      "layoutShifts": [
+        {
+          "time": 5054.700000047684,
+          "value": 0.025594663192650656
+        },
+        {
+          "time": 5191,
+          "value": 0.00480879377579811
+        },
+        {
+          "time": 5326.200000047684,
+          "value": 0.5896251063312675
+        }
+      ],
+      "overflow": false,
+      "resources": [
+        {
+          "name": "/assets/index-0KamMuHy.js",
+          "transfer": 389317,
+          "encoded": 389017,
+          "decoded": 1303089
+        },
+        {
+          "name": "/assets/rolldown-runtime-hePW80VL.js",
+          "transfer": 728,
+          "encoded": 428,
+          "decoded": 716
+        },
+        {
+          "name": "/assets/runtime-core.esm-bundler-DlpVMdG9.js",
+          "transfer": 25609,
+          "encoded": 25309,
+          "decoded": 65343
+        },
+        {
+          "name": "/assets/preload-helper-BLdHbfdN.js",
+          "transfer": 1097,
+          "encoded": 797,
+          "decoded": 1519
+        },
+        {
+          "name": "/assets/request-CXT2U788.js",
+          "transfer": 50667,
+          "encoded": 50367,
+          "decoded": 139576
+        },
+        {
+          "name": "/assets/vuex.esm-bundler-kZjoUkMW.js",
+          "transfer": 4880,
+          "encoded": 4580,
+          "decoded": 13778
+        },
+        {
+          "name": "/assets/vue-router-BA6uidzT.js",
+          "transfer": 9906,
+          "encoded": 9606,
+          "decoded": 25035
+        },
+        {
+          "name": "/assets/auth-Tiju-qeR.js",
+          "transfer": 606,
+          "encoded": 306,
+          "decoded": 812
+        },
+        {
+          "name": "/assets/store-4j4tMoW6.js",
+          "transfer": 849,
+          "encoded": 549,
+          "decoded": 901
+        },
+        {
+          "name": "/assets/social-CyZ1IcV4.js",
+          "transfer": 825,
+          "encoded": 525,
+          "decoded": 1503
+        },
+        {
+          "name": "/assets/index-lj4jU-5L.css",
+          "transfer": 141498,
+          "encoded": 141198,
+          "decoded": 1216787
+        },
+        {
+          "name": "/assets/Home-CpfGExos.js",
+          "transfer": 1741,
+          "encoded": 1441,
+          "decoded": 3319
+        },
+        {
+          "name": "/assets/Index-BvTT_-hG.js",
+          "transfer": 1737,
+          "encoded": 1437,
+          "decoded": 2711
+        },
+        {
+          "name": "/assets/post-xBHldvXB.js",
+          "transfer": 533,
+          "encoded": 233,
+          "decoded": 374
+        },
+        {
+          "name": "/assets/Pagination-qljCKE_-.js",
+          "transfer": 1147,
+          "encoded": 847,
+          "decoded": 1742
+        },
+        {
+          "name": "/assets/Pagination-ay8rfX32.css",
+          "transfer": 399,
+          "encoded": 99,
+          "decoded": 113
+        },
+        {
+          "name": "/assets/media-Cx2E1sty.js",
+          "transfer": 416,
+          "encoded": 116,
+          "decoded": 106
+        },
+        {
+          "name": "/favicon.ico",
+          "transfer": 4586,
+          "encoded": 4286,
+          "decoded": 4286
+        },
+        {
+          "name": "/api/billboard/show",
+          "transfer": 417,
+          "encoded": 117,
+          "decoded": 117
+        },
+        {
+          "name": "/api/post/list",
+          "transfer": 2831,
+          "encoded": 2531,
+          "decoded": 2531
+        },
+        {
+          "name": "/api/tip/today",
+          "transfer": 420,
+          "encoded": 120,
+          "decoded": 120
+        },
+        {
+          "name": "/api/promotion/all",
+          "transfer": 403,
+          "encoded": 103,
+          "decoded": 103
+        }
+      ],
+      "assetRequests": 17,
+      "assetEncodedBytes": 626855,
+      "errors": []
+    },
+    {
+      "run": 3,
+      "app": "community",
+      "profile": "mobile-4g-4x",
+      "contentReady": 5230.399999976158,
+      "fcp": 4284,
+      "lcp": 4284,
+      "cls": 0.610611068588203,
+      "layoutShifts": [
+        {
+          "time": 4865.899999976158,
+          "value": 0.025594663192650656
+        },
+        {
+          "time": 5132.100000023842,
+          "value": 0.5850164053955523
+        }
+      ],
+      "overflow": false,
+      "resources": [
+        {
+          "name": "/assets/index-0KamMuHy.js",
+          "transfer": 389317,
+          "encoded": 389017,
+          "decoded": 1303089
+        },
+        {
+          "name": "/assets/rolldown-runtime-hePW80VL.js",
+          "transfer": 728,
+          "encoded": 428,
+          "decoded": 716
+        },
+        {
+          "name": "/assets/runtime-core.esm-bundler-DlpVMdG9.js",
+          "transfer": 25609,
+          "encoded": 25309,
+          "decoded": 65343
+        },
+        {
+          "name": "/assets/preload-helper-BLdHbfdN.js",
+          "transfer": 1097,
+          "encoded": 797,
+          "decoded": 1519
+        },
+        {
+          "name": "/assets/request-CXT2U788.js",
+          "transfer": 50667,
+          "encoded": 50367,
+          "decoded": 139576
+        },
+        {
+          "name": "/assets/vuex.esm-bundler-kZjoUkMW.js",
+          "transfer": 4880,
+          "encoded": 4580,
+          "decoded": 13778
+        },
+        {
+          "name": "/assets/vue-router-BA6uidzT.js",
+          "transfer": 9906,
+          "encoded": 9606,
+          "decoded": 25035
+        },
+        {
+          "name": "/assets/auth-Tiju-qeR.js",
+          "transfer": 606,
+          "encoded": 306,
+          "decoded": 812
+        },
+        {
+          "name": "/assets/store-4j4tMoW6.js",
+          "transfer": 849,
+          "encoded": 549,
+          "decoded": 901
+        },
+        {
+          "name": "/assets/social-CyZ1IcV4.js",
+          "transfer": 825,
+          "encoded": 525,
+          "decoded": 1503
+        },
+        {
+          "name": "/assets/index-lj4jU-5L.css",
+          "transfer": 141498,
+          "encoded": 141198,
+          "decoded": 1216787
+        },
+        {
+          "name": "/assets/Home-CpfGExos.js",
+          "transfer": 1741,
+          "encoded": 1441,
+          "decoded": 3319
+        },
+        {
+          "name": "/assets/Index-BvTT_-hG.js",
+          "transfer": 1737,
+          "encoded": 1437,
+          "decoded": 2711
+        },
+        {
+          "name": "/assets/post-xBHldvXB.js",
+          "transfer": 533,
+          "encoded": 233,
+          "decoded": 374
+        },
+        {
+          "name": "/assets/Pagination-qljCKE_-.js",
+          "transfer": 1147,
+          "encoded": 847,
+          "decoded": 1742
+        },
+        {
+          "name": "/assets/Pagination-ay8rfX32.css",
+          "transfer": 399,
+          "encoded": 99,
+          "decoded": 113
+        },
+        {
+          "name": "/assets/media-Cx2E1sty.js",
+          "transfer": 416,
+          "encoded": 116,
+          "decoded": 106
+        },
+        {
+          "name": "/favicon.ico",
+          "transfer": 4586,
+          "encoded": 4286,
+          "decoded": 4286
+        },
+        {
+          "name": "/api/billboard/show",
+          "transfer": 417,
+          "encoded": 117,
+          "decoded": 117
+        },
+        {
+          "name": "/api/post/list",
+          "transfer": 2831,
+          "encoded": 2531,
+          "decoded": 2531
+        },
+        {
+          "name": "/api/tip/today",
+          "transfer": 420,
+          "encoded": 120,
+          "decoded": 120
+        },
+        {
+          "name": "/api/promotion/all",
+          "transfer": 403,
+          "encoded": 103,
+          "decoded": 103
+        }
+      ],
+      "assetRequests": 17,
+      "assetEncodedBytes": 626855,
+      "errors": []
+    }
+  ]
+}

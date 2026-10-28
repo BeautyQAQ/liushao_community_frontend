@@ -1,0 +1,118 @@
+{
+  "medians": {
+    "before": {
+      "admin": {
+        "desktop": {
+          "fcp": 316,
+          "lcp": 356,
+          "contentReady": 387.39999997615814,
+          "cls": 0.0009286908436213991,
+          "assetRequests": 8,
+          "assetEncodedBytes": 404367
+        },
+        "mobile-4g-4x": {
+          "fcp": 3032,
+          "lcp": 3148,
+          "contentReady": 3166.600000023842,
+          "cls": 0,
+          "assetRequests": 8,
+          "assetEncodedBytes": 404367
+        }
+      },
+      "community": {
+        "desktop": {
+          "fcp": 476,
+          "lcp": 476,
+          "contentReady": 776.8999999761581,
+          "cls": 0.09742473060806756,
+          "assetRequests": 17,
+          "assetEncodedBytes": 626855
+        },
+        "mobile-4g-4x": {
+          "fcp": 4284,
+          "lcp": 4284,
+          "contentReady": 5457.600000023842,
+          "cls": 0.610611068588203,
+          "assetRequests": 17,
+          "assetEncodedBytes": 626855
+        }
+      }
+    },
+    "after": {
+      "admin": {
+        "desktop": {
+          "fcp": 240,
+          "lcp": 320,
+          "contentReady": 405.39999997615814,
+          "cls": 0,
+          "assetRequests": 12,
+          "assetEncodedBytes": 123825
+        },
+        "mobile-4g-4x": {
+          "fcp": 1596,
+          "lcp": 1764,
+          "contentReady": 2111.6999999284744,
+          "cls": 0,
+          "assetRequests": 12,
+          "assetEncodedBytes": 123825
+        }
+      },
+      "community": {
+        "desktop": {
+          "fcp": 176,
+          "lcp": 528,
+          "contentReady": 531,
+          "cls": 0.0021418595679012346,
+          "assetRequests": 31,
+          "assetEncodedBytes": 179941
+        },
+        "mobile-4g-4x": {
+          "fcp": 1204,
+          "lcp": 2784,
+          "contentReady": 3051.6999999284744,
+          "cls": 0.002912087295018945,
+          "assetRequests": 31,
+          "assetEncodedBytes": 179941
+        }
+      }
+    }
+  },
+  "builds": {
+    "before": {
+      "admin": {
+        "entry": "/assets/index-DlNEXu0G.js",
+        "entryJs": 869908,
+        "mainCss": 361766,
+        "totalJs": 1153429,
+        "totalCss": 364629,
+        "largestJs": 869908
+      },
+      "community": {
+        "entry": "/assets/index-0KamMuHy.js",
+        "entryJs": 1303089,
+        "mainCss": 1216787,
+        "totalJs": 1687832,
+        "totalCss": 1222254,
+        "largestJs": 1303089
+      }
+    },
+    "after": {
+      "admin": {
+        "entry": "/assets/index-DVAkG45_.js",
+        "entryJs": 93580,
+        "mainCss": 5897,
+        "totalJs": 699387,
+        "totalCss": 186940,
+        "largestJs": 122254
+      },
+      "community": {
+        "entry": "/assets/index-DZ879cAz.js",
+        "entryJs": 49420,
+        "mainCss": 7300,
+        "totalJs": 718701,
+        "totalCss": 122752,
+        "largestJs": 119377
+      }
+    }
+  }
+}

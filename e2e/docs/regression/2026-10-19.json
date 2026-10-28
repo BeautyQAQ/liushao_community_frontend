@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "description": "当前四个生产应用的真实接口浏览器回归；仅保存脱敏验收元数据。",
+  "runId": "20261019t060830z-f406fc3a",
+  "command": "CHROMIUM_EXECUTABLE=<existing Chromium executable> python3 scripts/test-e2e.py --skip-install",
+  "runnerExitCode": 0,
+  "runtime": {
+    "node": "v22.23.1",
+    "playwright": "1.64.0",
+    "chromium": "148.0.7778.96",
+    "browserSource": "CHROMIUM_EXECUTABLE"
+  },
+  "applications": {
+    "authority_management_backend": {
+      "commit": "89679a75507c121365a6283375eb2fdd6465f082",
+      "dirty": false
+    },
+    "authority_management_frontend": {
+      "commit": "ab9fae2871b5e34ad4fb030e086df5700cda2e03",
+      "dirty": false
+    },
+    "liushao_community_backend": {
+      "commit": "0a0def684df69de7c9496c328b521497af37c306",
+      "dirty": false
+    },
+    "liushao_community_frontend": {
+      "commit": "13916b219bc2f7ea053edfb8c3fb8b2d84b1908b",
+      "dirty": false
+    }
+  },
+  "services": {
+    "database": "MySQL 8.4",
+    "cache": "Redis 7",
+    "mail": "isolated in-memory SMTP; actual application delivery"
+  },
+  "viewports": {
+    "desktop": {
+      "width": 1440,
+      "height": 900
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "deviceScaleFactor": 2
+    }
+  },
+  "stats": {
+    "startTime": "2026-10-19T06:13:30.358Z",
+    "duration": 203469.637,
+    "expected": 10,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "productionBuildsPassed": true,
+  "deploymentSmokePassed": true,
+  "cleanup": {
+    "containersRemoved": true,
+    "volumesRemoved": true,
+    "networksRemoved": true,
+    "generatedImagesRemoved": true,
+    "privateCredentialsRemoved": true
+  },
+  "tests": [
+    {
+      "file": "e2e/tests/admin.spec.cjs",
+      "title": "社区审核、作者重新提交、账号禁用恢复及审计形成真实闭环",
+      "project": "desktop",
+      "status": "passed",
+      "durationMs": 54334,
+      "attempts": 1
+    },
+    {
+      "file": "e2e/tests/admin.spec.cjs",
+      "title": "后台只读权限、实时撤权、角色变更与密码重置均由服务端执行",
+      "project": "desktop",
+      "status": "passed",
+      "durationMs": 14156,
+      "attempts": 1
+    },
+    {
+      "file": "e2e/tests/admin.spec.cjs",
+      "title": "社区审核、作者重新提交、账号禁用恢复及审计形成真实闭环",
+      "project": "mobile",
+      "status": "passed",
+      "durationMs": 64394,
+      "attempts": 1
+    },
+    {
+      "file": "e2e/tests/admin.spec.cjs",
+      "title": "后台只读权限、实时撤权、角色变更与密码重置均由服务端执行",
+      "project": "mobile",
+      "status": "passed",
+      "durationMs": 15250,
+      "attempts": 1
+    },
+    {
+      "file": "e2e/tests/community.spec.cjs",
+      "title": "浏览器注册、登录、Markdown 图片发布、编辑与搜索",
+      "project": "desktop",
+      "status": "passed",
+      "durationMs": 7156,
+      "attempts": 1
+    },
+    {
+      "file": "e2e/tests/community.spec.cjs",
+      "title": "头像归属、两用户互动、关注通知及私信隔离",
+      "project": "desktop",
+      "status": "passed",
+      "durationMs": 14960,
+      "attempts": 1
+    },
+    {
+      "file": "e2e/tests/community.spec.cjs",
+      "title": "真实邮件验证与找回密码、一次性验证码和旧会话失效",
+      "project": "desktop",
+      "status": "passed",
+      "durationMs": 5152,
+      "attempts": 1
+    },
+    {
+      "file": "e2e/tests/community.spec.cjs",
+      "title": "浏览器注册、登录、Markdown 图片发布、编辑与搜索",
+      "project": "mobile",
+      "status": "passed",
+      "durationMs": 6637,
+      "attempts": 1
+    },
+    {
+      "file": "e2e/tests/community.spec.cjs",
+      "title": "头像归属、两用户互动、关注通知及私信隔离",
+      "project": "mobile",
+      "status": "passed",
+      "durationMs": 14977,
+      "attempts": 1
+    },
+    {
+      "file": "e2e/tests/community.spec.cjs",
+      "title": "真实邮件验证与找回密码、一次性验证码和旧会话失效",
+      "project": "mobile",
+      "status": "passed",
+      "durationMs": 3745,
+      "attempts": 1
+    }
+  ],
+  "sourceSha256": {
+    "scripts/test-e2e.py": "aa44d12026dfe0e83f092af36b2660dab539ff241ab561fd68fbd89946bd30ff",
+    "scripts/init-deploy.py": "e475af36d81fa9a7470bba7042009e8f16f282f7c697d16bffff18b19e355db0",
+    "scripts/smoke-deploy.py": "82f412a7c6c89021c938c94434361ab2a77832c0fa077ce0af2a8e97c223e57a",
+    "compose.yaml": "e971ef693489d3f85b35b0701e16b1e4a66937fbca5e0e589b1db32ed07a5f3d",
+    "e2e/package.json": "76514fd9cee991a45bc8b68869d517010854eed8cadc451e3aaa94b83ec29bf3",
+    "e2e/package-lock.json": "ba1fba23a9d64b9ea273745f830c23135aec31f6f572fc34bc83a5cb4e3b4068",
+    "e2e/compose.yaml": "71c4fb0b5c697968072447efb03dcbe3417c49ba68ec8c6483ee6e1c1e5a1681",
+    "e2e/playwright.config.cjs": "4dc76a2545d013e040ab4de8d27164196bc77ef3765176a55dd2e31ec9f0edf8",
+    "e2e/fixtures.cjs": "a362c1d07caeba040ed60a9615887e19e03aeb196d831c8bdd64fade4ae072d4",
+    "e2e/support.cjs": "084826b226a31ad6c0871e50759202c05a37672739deb041e1be13ffaf7959e0",
+    "e2e/smtp.cjs": "4f453d1bf4dbebea3a21ff23bb8c00ca3e307e50aa044191e64dcd383ee2d7aa",
+    "e2e/check-browser.cjs": "2302b7f7a703e65a12497a43992f43518c96acaf76c513bb5ec33d92ee32057e",
+    "e2e/tests/admin.spec.cjs": "f274c544cbe8f37490b40c76075d39538b90dc9c32472d89a22abd5e0f154a31",
+    "e2e/tests/community.spec.cjs": "a6a35a0a756e399e63713f33bdb6a29efdf07c9fb74b46e44fd13e492c450f50"
+  },
+  "limitations": [
+    "Chromium only; mobile viewport emulation, not physical-device testing.",
+    "This run used the recorded existing Chromium executable; the Playwright-managed browser download was not validated.",
+    "Formal SMTP authentication, TLS and external deliverability were not tested.",
+    "Root orchestration and tests are not yet versioned; integrated remote CI was not executed.",
+    "No formal deployment, full accessibility audit or real-user performance measurement."
+  ]
+}
