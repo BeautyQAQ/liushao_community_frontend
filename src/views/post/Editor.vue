@@ -8,6 +8,7 @@
     </el-alert>
     <el-button v-if="(conflict || loadError) && hasRecovery" class="mb-4" @click="copyAsNew">将当前内容复制为新主题</el-button>
     <el-form v-if="ready" ref="formRef" :model="form" :rules="rules" :disabled="publishing" label-position="top" @submit.prevent="save">
+      <p class="has-text-grey mb-4">新帖和修改后的内容审核通过后才会公开展示。</p>
       <el-form-item label="标题" prop="title"><el-input v-model="form.title" maxlength="160" show-word-limit placeholder="用一句话描述你的主题" /></el-form-item>
       <el-form-item label="标签" prop="tags"><el-select v-model="form.tags" multiple filterable allow-create default-first-option :multiple-limit="5" placeholder="输入标签后按回车，最多 5 个">
         <el-option v-for="tag in tags" :key="tag.id" :label="tag.name" :value="tag.name" />
@@ -17,7 +18,7 @@
         <el-form-item label="内容" prop="content"><el-input v-model="form.content" type="textarea" :rows="16" maxlength="20000" show-word-limit placeholder="支持 Markdown。写下你的经验、问题或想法。" /></el-form-item>
       </el-tab-pane><el-tab-pane label="预览" name="preview"><MarkdownContent :content="form.content" /></el-tab-pane></el-tabs>
       <p class="draft-status has-text-grey is-size-7" role="status" aria-live="polite">{{ statusText }}</p>
-      <div class="editor-actions mt-4"><el-button type="primary" native-type="submit" :loading="publishing" :disabled="uploading || conflict">{{ editing ? '保存修改' : '发布帖子' }}</el-button><el-button :loading="syncing" :disabled="publishing || conflict" @click="saveManually">保存草稿</el-button><el-button :disabled="publishing" @click="router.push('/me/drafts')">返回草稿箱</el-button></div>
+      <div class="editor-actions mt-4"><el-button type="primary" native-type="submit" :loading="publishing" :disabled="uploading || conflict">{{ editing ? '提交修改' : '提交审核' }}</el-button><el-button :loading="syncing" :disabled="publishing || conflict" @click="saveManually">保存草稿</el-button><el-button :disabled="publishing" @click="router.push('/me/drafts')">返回草稿箱</el-button></div>
     </el-form>
     <el-empty v-else-if="!loading" description="暂时无法打开编辑器"><el-button @click="router.go(0)">重试</el-button><el-button @click="router.push('/me/drafts')">返回草稿箱</el-button></el-empty>
   </el-card>

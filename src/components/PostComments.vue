@@ -49,7 +49,7 @@ async function submit() {
   if (sending.value || !content.value.trim()) return
   sending.value = true
   try {
-    await addComment(props.postId, content.value.trim(), replyTo.value ? replyTo.value.parentId || replyTo.value.id : undefined)
+    await addComment(props.postId, content.value.trim(), replyTo.value?.id)
     content.value = ''; replyTo.value = undefined; current.value = Math.floor(total.value / size.value) + 1
     await load(); emit('changed'); ElMessage.success('评论已发布')
   } catch { /* Keep the draft and reply target for retry. */ } finally { sending.value = false }

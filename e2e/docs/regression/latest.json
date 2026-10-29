@@ -1,9 +1,8 @@
 {
   "schemaVersion": 1,
-  "description": "目录整理后，从社区前端仓库的新入口执行四项目生产构建、部署冒烟与桌面/手机浏览器回归。",
-  "runId": "20261028t073239z-7008d89d",
+  "description": "修复审核版本冲突、同名新标签并发创建和回复目标通知；新帖及作者修改统一待审。",
+  "runId": "20261029t065039z-88c16f6c",
   "command": "CHROMIUM_EXECUTABLE=/path/to/chrome python3 liushao_community_frontend/e2e/run.py --skip-install",
-  "runnerExitCode": 0,
   "runtime": {
     "node": "v22.23.1",
     "playwright": "1.64.0",
@@ -12,19 +11,19 @@
   },
   "applications": {
     "authority_management_backend": {
-      "commit": "89679a75507c121365a6283375eb2fdd6465f082",
+      "commit": "ffc7db6828208ed82ea4a3ad1315a6457eeecd6b",
       "dirty": true
     },
     "authority_management_frontend": {
-      "commit": "ab9fae2871b5e34ad4fb030e086df5700cda2e03",
+      "commit": "11ad6553568aa4294dc16402e493035c93dcb0ed",
       "dirty": true
     },
     "liushao_community_backend": {
-      "commit": "bda8528d35568a666884995979dc94597b6bec40",
+      "commit": "be61374e758c3bfe99e6fef4a3c37ac9c0530fba",
       "dirty": true
     },
     "liushao_community_frontend": {
-      "commit": "1734d1fd73068d668e105d2336f0c65d5e829fa1",
+      "commit": "895795add7e3b66b340001c3eebc97c601fbb4ce",
       "dirty": true
     }
   },
@@ -45,9 +44,9 @@
     }
   },
   "stats": {
-    "startTime": "2026-10-28T07:38:32.685Z",
-    "duration": 301811.082,
-    "expected": 16,
+    "startTime": "2026-10-29T06:57:02.179Z",
+    "duration": 330930.70399999997,
+    "expected": 22,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0
@@ -55,10 +54,11 @@
   "productionBuildsPassed": true,
   "deploymentSmokePassed": true,
   "otherChecks": {
-    "backupBundleTestsPassed": 27,
-    "documentLinks": "passed",
-    "composeBuildAndBindPaths": "passed",
-    "scriptSyntax": "passed"
+    "communityBackendTestsPassed": 71,
+    "adminBackendTestsPassed": 38,
+    "optionalMysqlTimezoneSuite": "not configured; skipped",
+    "frontendBuildsPassed": 2,
+    "mysqlFlywayMigration": "V6 applied successfully"
   },
   "cleanup": {
     "containersRemoved": true,
@@ -139,6 +139,48 @@
       "retries": 0
     },
     {
+      "title": "不同作者并发新建草稿和使用同一新标签提交都成功且计数准确",
+      "file": "core.spec.cjs",
+      "project": "desktop",
+      "status": "passed",
+      "retries": 0
+    },
+    {
+      "title": "审核旧页面拒绝放行新正文，重新查看后才可审核，公开文章修改后再次待审",
+      "file": "core.spec.cjs",
+      "project": "desktop",
+      "status": "passed",
+      "retries": 0
+    },
+    {
+      "title": "浏览器回复一条回复时保留实际目标，读者收到回复通知且展示仍为一层",
+      "file": "core.spec.cjs",
+      "project": "desktop",
+      "status": "passed",
+      "retries": 0
+    },
+    {
+      "title": "不同作者并发新建草稿和使用同一新标签提交都成功且计数准确",
+      "file": "core.spec.cjs",
+      "project": "mobile",
+      "status": "passed",
+      "retries": 0
+    },
+    {
+      "title": "审核旧页面拒绝放行新正文，重新查看后才可审核，公开文章修改后再次待审",
+      "file": "core.spec.cjs",
+      "project": "mobile",
+      "status": "passed",
+      "retries": 0
+    },
+    {
+      "title": "浏览器回复一条回复时保留实际目标，读者收到回复通知且展示仍为一层",
+      "file": "core.spec.cjs",
+      "project": "mobile",
+      "status": "passed",
+      "retries": 0
+    },
+    {
       "title": "精华展示和关注动态遵守公开状态、当前账号与取消关注",
       "file": "creation.spec.cjs",
       "project": "desktop",
@@ -183,20 +225,32 @@
   ],
   "sourceSha256": {
     "authority_management_backend/Dockerfile": "8d8b6feab64a73bc1b1d5c2c5ee8d6c6f29b5cf8e4f409de734665d61c4ddff2",
+    "authority_management_backend/src/main/java/com/liushao/vueadmin/community/CommunityRequests.java": "c349a68b53520388a88a8c72872ec9d2eef3102e48f20c4ee84279818a07bdf9",
+    "authority_management_backend/src/test/java/com/liushao/vueadmin/community/CommunityAdminControllerTest.java": "c4efe82f57bca88904cf828bd22ddd3ca520248594bd81019627f147b3e2e371",
+    "authority_management_frontend/src/views/community/Posts.vue": "dcba5c86be2efa06bb3d69433d03b1f16ca2d7236edd5e561a95f9cfc92e7274",
     "liushao_community_backend/Dockerfile": "fe12c7127fc3e3e17aa121b906582b29e0c7056b37c2f092c786ba77b09d80f3",
     "liushao_community_backend/deploy/compose.yaml": "d156134447d32348069396f0f3887435fb31231abe240d9ef0f6f940f32116d2",
     "liushao_community_backend/deploy/scripts/init-deploy.py": "83f8af11e1ab5b856ba618ad89a82f020129b91eee8871eb91f370b807d789d8",
     "liushao_community_backend/deploy/scripts/smoke-deploy.py": "82f412a7c6c89021c938c94434361ab2a77832c0fa077ce0af2a8e97c223e57a",
+    "liushao_community_backend/deploy/scripts/test-backup-restore.py": "8ee220bb4ece50f14614cf31daf8d1b4274319e48cf482ea5ce50b03e7014d0d",
+    "liushao_community_backend/src/main/java/com/liushao/controller/CommunityOperationsController.java": "3c02b3da5f02c001d3cc1c9b7b55e0771b30614ffa7a5b3bedcc46b313bf5358",
     "liushao_community_backend/src/main/java/com/liushao/controller/CommunitySocialController.java": "085b718b5b9b589fb795449390b0232ee52f80eb432ccf2f97c96976eea40f40",
     "liushao_community_backend/src/main/java/com/liushao/controller/PostDraftController.java": "6b755785e1f1a4ad3ab4d84fbdb8881a61e5c994f25ff19a5bcac7714961bd6c",
     "liushao_community_backend/src/main/java/com/liushao/dao/BmsTopicDao.java": "86f6fb18a00b22ce85324032cff21a1fec1fa4995e7b925c01d7ab5d10b374ba",
     "liushao_community_backend/src/main/java/com/liushao/dao/BmsTopicDaoImpl.java": "92717d3aea5d50b491021cc065a2624aee16b471349488f2e22399f8a1759929",
     "liushao_community_backend/src/main/java/com/liushao/model/dto/DraftRequests.java": "11385d9e787a053ad99573b7dfe9495bd94a07e48571252c26aa1254b6478dc0",
+    "liushao_community_backend/src/main/java/com/liushao/model/entity/BmsPost.java": "f57c98a7b61870a1a7e41af2d2dd0779052a377d9679b702f7295dadf1a5dd56",
     "liushao_community_backend/src/main/java/com/liushao/model/vo/PostDraft.java": "7d8cc626c8329b4f0602ad4ae6ddc3d3bc4c4737d065d7024a2866cbaa318ec1",
-    "liushao_community_backend/src/main/java/com/liushao/service/BmsPostService.java": "2255bbf329aff0f070d12eb8880759965c36dc332eba86151e41e1d9be5b47b4",
-    "liushao_community_backend/src/main/java/com/liushao/service/PostDraftService.java": "7770ccb96f0e2ecba5d7f8868fa69063d96006c44c21a5f19220c0f0cc3cd60b",
+    "liushao_community_backend/src/main/java/com/liushao/service/BmsPostService.java": "4a45d654fc65266cfb4dd0c7a64b063e2897d857ab3f42a8a9a3fb3ac3c0bb99",
+    "liushao_community_backend/src/main/java/com/liushao/service/BmsTagService.java": "82a4e60e150a1ff329275b1cb00536840b0c65c8d9385fe2597736b5d1923ff7",
+    "liushao_community_backend/src/main/java/com/liushao/service/CommunityOperationsService.java": "187a64d108e8c97c9253ac2ccdbbc5311832a972ae0d9613f6a45424cfd5227c",
+    "liushao_community_backend/src/main/java/com/liushao/service/PostDraftService.java": "6e4491c411b47ac54dc839b7889374e46d5dae7db9de43a6268fea945fb53071",
     "liushao_community_backend/src/main/resources/db/migration/V4__post_drafts.sql": "120899a5a5e92f51ee074cc57765108aa56ea5808310c7e31c2b43e996f6a426",
-    "liushao_community_backend/src/test/java/com/liushao/ContentCreationIntegrationTest.java": "3f64874d2d16fc9263a87333e4317fb4abf1fbfa7f086981e9575412226961ce",
+    "liushao_community_backend/src/main/resources/db/migration/V6__require_post_review.sql": "57853362de4ae77b70b0502583d243ff75020da17a4d258145530bf994cc9c05",
+    "liushao_community_backend/src/test/java/com/liushao/CommunityApiIntegrationTest.java": "57c5a618efd26528699676965f8233d8ccefdc490ef22642d9976b42c487e78c",
+    "liushao_community_backend/src/test/java/com/liushao/CommunitySocialIntegrationTest.java": "dc1e2094bbce6234647c088f7256a1e8462e3c8eae5fa38f9ea4492b21a341c1",
+    "liushao_community_backend/src/test/java/com/liushao/ContentCreationIntegrationTest.java": "bb477385a9084f24e92b7b13ec4bc641d2e6186d08899730efc3bd6a496ad5ca",
+    "liushao_community_backend/src/test/java/com/liushao/dao/BmsTopicDaoTest.java": "8783d48e3508c9b8495a7f236259ac775c5b968e44654f8744a666dff3e209f0",
     "liushao_community_frontend/.dockerignore": "a4ad696983cc09b01769a0e4972b6f4c4ded66271c4913fcd4c3333e76d6f291",
     "liushao_community_frontend/e2e/check-browser.cjs": "2302b7f7a703e65a12497a43992f43518c96acaf76c513bb5ec33d92ee32057e",
     "liushao_community_frontend/e2e/compose.yaml": "9f8dcf3ffa021e497c02cde0f6491fe77d732af259a6cceea5ebe60ec80bae06",
@@ -206,13 +260,15 @@
     "liushao_community_frontend/e2e/playwright.config.cjs": "4dc76a2545d013e040ab4de8d27164196bc77ef3765176a55dd2e31ec9f0edf8",
     "liushao_community_frontend/e2e/run.py": "3270ec113a17d63e0cb752b9c9487ca78ece1b4537233b04b9466e6b1f187c20",
     "liushao_community_frontend/e2e/smtp.cjs": "4f453d1bf4dbebea3a21ff23bb8c00ca3e307e50aa044191e64dcd383ee2d7aa",
-    "liushao_community_frontend/e2e/support.cjs": "b109349ff86f5c4242f3cdf4bc232c4da4bb55e2e371f775861bf0002da0f228",
-    "liushao_community_frontend/e2e/tests/admin.spec.cjs": "52ae43c925ba6e488e955b8a7f502543a938c159426a26578b2ddbc998b018db",
-    "liushao_community_frontend/e2e/tests/community.spec.cjs": "bd41765c5bca363a204f36205554bc419af7b2585194b467e1dd970689e54f91",
-    "liushao_community_frontend/e2e/tests/creation.spec.cjs": "9af9e7ad4e1185ea77c146bc0f4186779770c15e22c29facc17f10383e43fdcb",
+    "liushao_community_frontend/e2e/support.cjs": "091aa3eba7437a46df3a5999866751d2edb1da59218a5b6152a8e72a91fde96c",
+    "liushao_community_frontend/e2e/tests/admin.spec.cjs": "cf9fa8957aad2880cfb3b233363fa165ac4e50c561f9ceaef62a4114982a9f4b",
+    "liushao_community_frontend/e2e/tests/community.spec.cjs": "5037c39ad6c4ef2f09d5c09771a2a67069331b5cac43024c4c4a8cfd89cfda50",
+    "liushao_community_frontend/e2e/tests/core.spec.cjs": "b242a7edd5044405080eaa268240373cfb5b5d825e1883b93c9ba0d68350c163",
+    "liushao_community_frontend/e2e/tests/creation.spec.cjs": "f6406486a108052476ff0ab36925087bf22e9d7900156dfef49231057f4b5d7f",
     "liushao_community_frontend/src/api/drafts.ts": "fca3847e9f02be4e59b08ad99332757a66183a44f1592c7c102675b8a5640ff4",
     "liushao_community_frontend/src/api/post.ts": "d7a444023b734d894c012cf55ac7e34d7c4202ea27d7b4dd899ebfc6b633c3e0",
     "liushao_community_frontend/src/components/Layout/Header.vue": "99e8ae76b59d4f540b4097f0f09740738866d50916fde24adec75c4fa99355fe",
+    "liushao_community_frontend/src/components/PostComments.vue": "3d6a0e5c585f7038bcf8a285519c4ed3e938c5b3f078e0f42e9e21fd24b73a01",
     "liushao_community_frontend/src/composables/usePostDraft.ts": "9f9b012b3b8c6a45ae8c237c074c4431e7dd1a731060b8e2ae58441f51040654",
     "liushao_community_frontend/src/router/index.ts": "22dfcdcf8f3dfbf2004420b08278d82cc8aeb9722ea98d9e4037a41de0435566",
     "liushao_community_frontend/src/types.ts": "922682b48c1f0950e253d77ff5439441d5303b364366a5b5770ae890a9376fb6",
@@ -221,7 +277,7 @@
     "liushao_community_frontend/src/views/member/Drafts.vue": "281c92d9c007255790ded03857067603d62050273485dc41ecea98a13947ebca",
     "liushao_community_frontend/src/views/member/SavedPosts.vue": "a0f5cf12bff48992065097721a653912f76c5c302a69f3b6e84822cff280723f",
     "liushao_community_frontend/src/views/post/Detail.vue": "3b952bba3c7e5369420416fcf346bc4ddda768403ae0b0ace23a50ac35148f5d",
-    "liushao_community_frontend/src/views/post/Editor.vue": "e85edc49b4708bdb2c7f4e4eb7a5ebd8c6705023bb6324cdc607eafceefb3dc5",
+    "liushao_community_frontend/src/views/post/Editor.vue": "422f77fdea1ae734f69221557a202c4fdeaf9beec5a067fc07f88d6045ac5952",
     "liushao_community_frontend/src/views/post/Index.vue": "484d8b1467bcded91e79664f86541661cd16af3dc6e63b256b33f5e3d467306e"
   },
   "limitations": [

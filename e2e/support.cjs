@@ -126,6 +126,14 @@ async function adminLogin(user = credentials) {
   return result.data.token
 }
 
+async function reviewPost(id, token, { status = 'PUBLISHED', top, essence, reason = '浏览器验收内容审核' } = {}) {
+  const current = (await api(adminURL, `/api/community/posts/${id}`, { token })).data
+  return (await api(adminURL, `/api/community/posts/${id}/moderation`, {
+    method: 'PUT', token,
+    data: { status, top: top ?? current.top, essence: essence ?? current.essence, reason, version: current.version }
+  })).data
+}
+
 async function loginAdminUI(page, user = credentials) {
   let login, loginData, key
   const attempt = async () => {
@@ -209,5 +217,5 @@ const draftPublishPath = page => `/api/me/drafts/${draftId(page)}/publish`
 
 module.exports = {
   communityURL, adminURL, unique, credentials, api, registerUser,
-  loginCommunityUI, loginAdminUI, adminLogin, emailCode, tinyPng, assertNoOverflow, draftId, draftPublishPath
+  loginCommunityUI, loginAdminUI, adminLogin, reviewPost, emailCode, tinyPng, assertNoOverflow, draftId, draftPublishPath
 }

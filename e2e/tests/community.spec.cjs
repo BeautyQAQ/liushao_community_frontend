@@ -1,6 +1,6 @@
 const { test, expect, observeContext } = require('../fixtures.cjs')
 const {
-  communityURL, unique, api, registerUser, loginCommunityUI, emailCode, tinyPng, assertNoOverflow, draftPublishPath,
+  communityURL, unique, api, registerUser, loginCommunityUI, adminLogin, reviewPost, emailCode, tinyPng, assertNoOverflow, draftPublishPath,
 } = require('../support.cjs')
 
 const url = path => `${communityURL}/#${path}`
@@ -27,10 +27,14 @@ async function publish(page, title, content) {
   await page.goto(url('/post/create'))
   await page.getByLabel('标题', { exact: true }).fill(title)
   await page.getByLabel('内容', { exact: true }).fill(content)
-  const post = await mutate(page, draftPublishPath(page), () => page.getByRole('button', { name: '发布帖子', exact: true }).click())
-  await expect(page).toHaveURL(new RegExp(`#/post/${post.id}$`))
+  const post = await mutate(page, draftPublishPath(page), () => page.getByRole('button', { name: '提交审核', exact: true }).click())
+  await expect(page).toHaveURL(new RegExp(`#/me/posts/${post.id}$`))
+  expect(post.status).toBe('PENDING')
+  await api(communityURL, `/api/post/${post.id}`, { expected: 404 })
+  const reviewed = await reviewPost(post.id, await adminLogin())
+  await page.goto(url(`/post/${post.id}`))
   await expect(page.getByRole('heading', { name: title, exact: true })).toBeVisible()
-  return post
+  return reviewed
 }
 
 async function revealNavigation(page) {
@@ -77,8 +81,14 @@ test.describe('社区真实业务闭环', () => {
     await previewImage.scrollIntoViewIfNeeded()
     await expect.poll(() => previewImage.evaluate(element => element.complete && element.naturalWidth > 0)).toBe(true)
 
-    const post = await mutate(page, draftPublishPath(page), () => page.getByRole('button', { name: '发布帖子', exact: true }).click())
-    await expect(page).toHaveURL(new RegExp(`#/post/${post.id}$`))
+    const post = await mutate(page, draftPublishPath(page), () => page.getByRole('button', { name: '提交审核', exact: true }).click())
+    await expect(page).toHaveURL(new RegExp(`#/me/posts/${post.id}$`))
+    expect(post.status).toBe('PENDING')
+    await api(communityURL, `/api/post/${post.id}`, { expected: 404 })
+    expect((await api(communityURL, `/api/post/list?query=${encodeURIComponent(title)}`)).data.totalElements).toBe(0)
+    const admin = await adminLogin()
+    await reviewPost(post.id, admin)
+    await page.goto(url(`/post/${post.id}`))
     await expect(page.getByRole('heading', { name: title, exact: true })).toBeVisible()
     await expect(page.locator('.markdown-content img')).toHaveAttribute('src', `/api${image.url}`)
     await expect(page.locator('.markdown-content script, .markdown-content [href^="javascript:"]')).toHaveCount(0)
@@ -89,11 +99,16 @@ test.describe('社区真实业务闭环', () => {
     await page.getByLabel('标题', { exact: true }).fill(editedTitle)
     const draft = await page.getByLabel('内容', { exact: true }).inputValue()
     await page.getByLabel('内容', { exact: true }).fill(`${draft}\n\n编辑后保留图片与标签。`)
-    const updated = await mutate(page, draftPublishPath(page), () => page.getByRole('button', { name: '保存修改', exact: true }).click())
+    const updated = await mutate(page, draftPublishPath(page), () => page.getByRole('button', { name: '提交修改', exact: true }).click())
+    await expect(page).toHaveURL(new RegExp(`#/me/posts/${post.id}$`))
+    expect(updated.status).toBe('PENDING')
+    await api(communityURL, `/api/post/${post.id}`, { expected: 404 })
     await expect(page.getByRole('heading', { name: editedTitle, exact: true })).toBeVisible()
     expect(updated.version).toBeGreaterThan(post.version)
     await api(communityURL, `/api/post/${post.id}`, { method: 'PUT', token: session.token, data: { title, content: draft, tags: [tag], version: post.version }, expected: 409 })
     await api(communityURL, '/api/post/add', { method: 'POST', data: { title: '未登录发帖', content: '拒绝未登录写入', tags: [] }, expected: 401 })
+    await reviewPost(post.id, admin)
+    await page.goto(url(`/post/${post.id}`))
 
     await revealNavigation(page)
     const search = page.getByRole('searchbox', { name: '搜索标题、正文、标签或作者' })

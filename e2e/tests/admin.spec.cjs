@@ -7,6 +7,7 @@ const {
   registerUser,
   loginCommunityUI,
   loginAdminUI,
+  reviewPost,
   assertNoOverflow,
   draftPublishPath,
 } = require('../support.cjs');
@@ -106,7 +107,9 @@ test('社区审核、作者重新提交、账号禁用恢复及审计形成真�
     method: 'POST', token: author.token,
     data: { title, content: originalContent, tags: ['e2e'] },
   })).data;
-  expect(post.status).toBe('PUBLISHED');
+  expect(post.status).toBe('PENDING');
+  await api(communityURL, `/api/post/${post.id}`, { expected: 404 });
+  await reviewPost(post.id, adminToken);
   const hideReason = unique('下架原因');
   const publishReason = unique('重新公开');
   const disableReason = unique('禁用原因');
@@ -133,7 +136,7 @@ test('社区审核、作者重新提交、账号禁用恢复及审计形成真�
   await authorPage.getByPlaceholder('支持 Markdown。写下你的经验、问题或想法。', { exact: true })
     .fill(updatedContent);
   await successfulAction(authorPage, draftPublishPath(authorPage), 'POST', () =>
-    authorPage.getByRole('button', { name: '保存修改', exact: true }).click());
+    authorPage.getByRole('button', { name: '提交修改', exact: true }).click());
   await expect(authorPage).toHaveURL(new RegExp(`/#/me/posts/${post.id}$`));
   await expect(authorPage.getByText('帖子正在等待审核，仅自己可见', { exact: true })).toBeVisible();
   const pending = await api(communityURL, `/api/me/posts/${post.id}`, { token: author.token });
@@ -196,6 +199,7 @@ test('后台只读权限、实时撤权、角色变更与密码重置均由服�
     method: 'POST', token: author.token,
     data: { title: postTitle, content: '用于独立验证只读账号的审核与删除权限。', tags: ['e2e'] },
   })).data;
+  await reviewPost(post.id, adminToken);
   const roleName = unique('只读角色');
   const reader = { username: unique('reader'), password: 'ReadOnly-Original-123' };
   const menuTree = (await api(adminURL, '/api/sys/menu/list', { token: adminToken })).data;
@@ -239,7 +243,7 @@ test('后台只读权限、实时撤权、角色变更与密码重置均由服�
     await expect(readOnlyPost).toHaveCount(1);
     await api(adminURL, `/api/community/posts/${post.id}/moderation`, {
       method: 'PUT', token: readerToken,
-      data: { status: 'HIDDEN', top: false, essence: false, reason: '只读账户禁止审核' }, expected: 403,
+      data: { status: 'HIDDEN', top: false, essence: false, reason: '只读账户禁止审核', version: post.version }, expected: 403,
     });
     await api(adminURL, `/api/community/posts/${post.id}?reason=readonly-forbidden`, {
       method: 'DELETE', token: readerToken, expected: 403,

@@ -1,6 +1,6 @@
 const { test, expect } = require('../fixtures.cjs')
 const {
-  communityURL, adminURL, api, registerUser, loginCommunityUI, adminLogin, unique,
+  communityURL, adminURL, api, registerUser, loginCommunityUI, adminLogin, reviewPost, unique,
   draftId, draftPublishPath, assertNoOverflow,
 } = require('../support.cjs')
 
@@ -21,7 +21,7 @@ async function logout(page) {
 
 async function publish(page) {
   const pending = page.waitForResponse(response => new URL(response.url()).pathname === draftPublishPath(page) && response.request().method() === 'POST')
-  await page.getByRole('button', { name: '发布帖子', exact: true }).click()
+  await page.getByRole('button', { name: '提交审核', exact: true }).click()
   const response = await pending
   expect(response.status()).toBe(200)
   return (await response.json()).data
@@ -32,9 +32,10 @@ test('精华展示和关注动态遵守公开状态、当前账号与取消关�
   const title = unique('精华主题'), ordinaryTitle = unique('作者主题'), strangerTitle = unique('未关注主题')
   const create = (user, title) => api(communityURL, '/api/post/add', { method: 'POST', token: user.token, data: { title, content: '内容发现验收', tags: ['发现'] } })
   const featured = (await create(author, title)).data
-  await create(author, ordinaryTitle); await create(stranger, strangerTitle)
+  const ordinary = (await create(author, ordinaryTitle)).data, unrelated = (await create(stranger, strangerTitle)).data
   const admin = await adminLogin()
-  const moderate = status => api(adminURL, `/api/community/posts/${featured.id}/moderation`, { method: 'PUT', token: admin, data: { status, top: true, essence: true, reason: '内容发现验收' } })
+  await reviewPost(ordinary.id, admin); await reviewPost(unrelated.id, admin)
+  const moderate = status => reviewPost(featured.id, admin, { status, top: true, essence: true, reason: '内容发现验收' })
   await moderate('PUBLISHED')
   await page.goto(url('/?tab=following'))
   await expect(page.getByRole('button', { name: '登录查看关注动态', exact: true })).toBeVisible()
@@ -99,10 +100,14 @@ test('草稿在刷新前保留输入、账号间隔离、草稿箱续写发布�
   await expect(bodyInput(page)).toHaveValue(content)
   await bodyInput(page).fill(`${content}\n\n继续创作并发布。`)
   const post = await publish(page)
-  await expect(page).toHaveURL(new RegExp(`#/post/${post.id}$`))
+  await expect(page).toHaveURL(new RegExp(`#/me/posts/${post.id}$`))
+  expect(post.status).toBe('PENDING')
   await expect(page.getByRole('heading', { name: title, exact: true })).toBeVisible()
   await api(communityURL, `/api/me/drafts/${id}`, { token: author.token, expected: 404 })
   await api(communityURL, `/api/me/drafts/${id}/publish`, { method: 'POST', token: author.token, data: { version: draft.version }, expected: 404 })
+  expect((await api(communityURL, `/api/post/list?query=${encodeURIComponent(title)}`)).data.totalElements).toBe(0)
+  await api(communityURL, `/api/post/${post.id}`, { expected: 404 })
+  await reviewPost(post.id, await adminLogin())
   expect((await api(communityURL, `/api/post/list?query=${encodeURIComponent(title)}`)).data.totalElements).toBe(1)
   await page.goto(url('/post/create'))
   await titleInput(page).fill(unique('删除草稿'))
@@ -137,12 +142,12 @@ test('断网草稿可恢复同步，版本冲突保留正文并允许复制为�
   await bodyInput(page).fill('当前页面尚未同步的正文，需要保留')
   await expect(page.locator('.draft-status')).toContainText('草稿已在其他页面更新')
   await expect(bodyInput(page)).toHaveValue('当前页面尚未同步的正文，需要保留')
-  await expect(page.getByRole('button', { name: '发布帖子', exact: true })).toBeDisabled()
+  await expect(page.getByRole('button', { name: '提交审核', exact: true })).toBeDisabled()
   expect((await api(communityURL, `/api/me/drafts/${id}`, { token: author.token })).data.content).toBe('另一页面已保存的正文')
   await page.getByRole('button', { name: '将当前内容复制为新主题', exact: true }).click()
   await expect(bodyInput(page)).toHaveValue('当前页面尚未同步的正文，需要保留')
   expect(draftId(page)).not.toBe(id)
   await saved(page)
-  await expect(page.getByRole('button', { name: '发布帖子', exact: true })).toBeEnabled()
+  await expect(page.getByRole('button', { name: '提交审核', exact: true })).toBeEnabled()
   await assertNoOverflow(page)
 })
